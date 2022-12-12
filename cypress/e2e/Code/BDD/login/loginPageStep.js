@@ -1,0 +1,67 @@
+import {Given, When, Then} from 'cypress-cucumber-preprocessor/steps';
+
+const LoginPage = require('../../../../support/PageObject/LoginPage')
+const HomePage = require('../../../../support/PageObject/HomePage')
+
+const homePage = new HomePage()
+const loginPage = new LoginPage()
+
+Given('user opens the meropadhai website', () => {
+    cy.visit("https://meropadhai.com")
+    homePage.getPageTitle().should('have.text', 'Learn all courses at home.')
+})
+
+When('user clicks on Login button', () => {
+    homePage.getLoginButton().click()
+})
+
+Then('user should be redirected to Login page', () => {
+    cy.url().should('include', '/auth/signin')
+    loginPage.getPageTitle().should('have.text', 'Sign in to continue')
+})
+
+When('user clicks Login button and redirected to Login page', () => {
+    homePage.getLoginButton().click()
+    cy.url().should('include', '/auth/signin')
+    loginPage.getPageTitle().should('have.text', 'Sign in to continue')
+})
+
+When('user clicks on arrow icon to login', () => {
+    loginPage.submitBtn()
+    loginPage.havetitle().click()
+})
+
+Then('user should see error message', () => {
+    loginPage.emailEmpty().should('have.text', 'This field is required.')
+    loginPage.passwordEmpty().should('have.text', 'Password is required.')
+})
+
+When('user enters email {string} and password {string}', (email, password) => {
+    loginPage.fillEmail(email)
+    loginPage.fillPassword(password)
+})
+
+When('user clicks on arrow icon for loggin in', () => {
+    loginPage.submitBtn()
+})
+
+Then('user not existing message is shown', () => {
+    loginPage.userNotExist().should('have.text', 'User doesn\'t exist')
+})
+
+Then('user should password required atleast 8 characters message is shown', () => {
+    loginPage.passwordEmpty().should('have.text', 'Password should be at least 8 characters.')
+})
+
+When('user clicks Forgot Password button and redirected to Forgot Password page', () => {
+    cy.get('.chakra-text > a:nth-child(1)').click()
+    cy.url().should('include', '/user/forgot-password')
+    cy.get('h1').should('have.text', 'Forgot Password ?')
+    
+})
+
+Then('user comes back to Login page and previously filled form is cleared', () => {
+    cy.go('back')
+    cy.get('#field-1').should('have.value', '')
+    cy.get('#field-2').should('have.value', '')
+})
