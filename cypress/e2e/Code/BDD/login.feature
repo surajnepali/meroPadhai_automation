@@ -38,3 +38,21 @@ Feature: Mero Padhai
     Examples:
     | email               | password |
     | litime4584@3mkz.com | 12345678 |
+
+    Scenario Outline: User tries to login with invalid password
+    When user clicks Login button and redirected to Login page
+    And user enters email '<email>' and password '<password>'
+    And user clicks on arrow icon for loggin in
+    Then invalid password message is shown
+    Examples:
+    | email               | password |
+    |litime4584@3mkz.com  | 12345678 |
+
+    Scenario Outline: User logins successfully
+    When user clicks Login button and redirected to Login page
+    And user enters email '<email>' and password '<password>'
+    And user clicks on arrow icon for loggin in
+    Then user should be successfully logged in and redirected to Home page
+    Examples:
+    | email               | password |
+    | litime4584@3mkz.com | password |

@@ -30,7 +30,7 @@ class LoginPage extends HomePage{
         button.click()
     }
 
-    userNotExist(){
+    existenceTest(){
         const error = cy.get('div.ct-text')
         return error
     }

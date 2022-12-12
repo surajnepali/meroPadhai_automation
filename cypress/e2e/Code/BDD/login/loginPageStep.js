@@ -2,9 +2,11 @@ import {Given, When, Then} from 'cypress-cucumber-preprocessor/steps';
 
 const LoginPage = require('../../../../support/PageObject/LoginPage')
 const HomePage = require('../../../../support/PageObject/HomePage')
+const LogHomePage = require('../../../../support/PageObject/LogHomePage')
 
 const homePage = new HomePage()
 const loginPage = new LoginPage()
+const logHomePage = new LogHomePage()
 
 Given('user opens the meropadhai website', () => {
     cy.visit("https://meropadhai.com")
@@ -46,7 +48,7 @@ When('user clicks on arrow icon for loggin in', () => {
 })
 
 Then('user not existing message is shown', () => {
-    loginPage.userNotExist().should('have.text', 'User doesn\'t exist')
+    loginPage.existenceTest().should('have.text', 'User doesn\'t exist')
 })
 
 Then('user should password required atleast 8 characters message is shown', () => {
@@ -64,4 +66,13 @@ Then('user comes back to Login page and previously filled form is cleared', () =
     cy.go('back')
     cy.get('#field-1').should('have.value', '')
     cy.get('#field-2').should('have.value', '')
+})
+
+Then('invalid password message is shown', () => {
+    loginPage.existenceTest().should('have.text', 'Invalid Password')
+})
+
+Then('user should be successfully logged in and redirected to Home page', () => {
+    cy.url().should('include', '/')
+    logHomePage.pageTitle().should('have.text', 'On your markGet set Learn!')
 })
