@@ -4,6 +4,7 @@ class LogHomePage{
         this.title = '.css-gxanvf > .chakra-heading'
         this.succesfulLogin = 'div.ct-text' 
         this.explore = '.css-8p37wn > a:nth-child(1)'
+        this.library
     }
 
     pageTitle(){

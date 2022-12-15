@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 import {Given, When, Then} from 'cypress-cucumber-preprocessor/steps';
 
 const LoginPage = require('../../../../support/PageObject/LoginPage')
@@ -7,6 +9,7 @@ const ExplorePage = require('../../../../support/PageObject/ExplorePage')
 const CourseDetailsPage = require('../../../../support/PageObject/CourseDetailsPage')
 const CartPage = require('../../../../support/PageObject/CartPage')
 const EsewaPage = require('../../../../support/PageObject/EsewaPage')
+const MyLibrary = require('../../../../support/PageObject/MyLibrary')
 
 
 const homePage = new HomePage()
@@ -16,6 +19,7 @@ const explorePage = new ExplorePage()
 const courseDetailsPage = new CourseDetailsPage()
 const cartPage = new CartPage()
 const eSewaPage = new EsewaPage()
+const myLibrary = new MyLibrary()
 
 
 Given('user opens the meropadhai website', () => {
@@ -28,7 +32,7 @@ When('user goes to login page and logs in with {string} and {string}', (email, p
     homePage.getLoginButton().click()
     cy.url().should('include', '/auth/signin')
     loginPage.getPageTitle().should('have.text', 'Sign in to continue')
-    loginPage.fillEmail(email)
+    loginPage.fillEmail(email) 
     loginPage.fillPassword(password)
     loginPage.submitBtn()
     logHomePage.pageTitle().should('have.text', 'On your markGet set Learn!')
@@ -64,9 +68,9 @@ When('user clicks on the buy now button', () => {
 
 When('user choses course pricing for {string} and continues', (month) => {
     if(courseDetailsPage.getDropdown().select(month)){
-        courseDetailsPage.getPrice().should('exist').and('have.text', 'Rs. 200')
+        courseDetailsPage.getPrice().should('exist').and('have.text', 'Rs. 4')
     }
-    if(courseDetailsPage.getContinueBtn().contains('Rs.200')){
+    if(courseDetailsPage.getContinueBtn().contains('Rs.4')){
         cy.log("Continue button is enabled")
         courseDetailsPage.getContinueBtn().click()
     }
@@ -122,12 +126,15 @@ When('user is redirected to e-Sewa website, fills form with {string} and {string
     eSewaPage.getDetailEsewaId().should('have.value', eSewaId)
     eSewaPage.getDetailName().type('Suraj Nepali')
     eSewaPage.getDetailContact().type(eSewaId)
-    eSewaPage.getDetailEmail().type('surajnepali7896@gmail.com')
     eSewaPage.getDetailAddress().type('Pokhara')
+    eSewaPage.getDetailEmail().type('surajnepali7896@gmail.com')
     eSewaPage.getContPayBtn().click()
-    
+    eSewaPage.getConfirmPayment().contains('Confirm').click()
+       
 })
 
-Then('user is redirected to meropadhai website and course is bought', () => {
-
+Then('user is redirected to meropadhai website and {string} is bought', (courseName) => {
+    cy.url().should('include', '/my-learning')
+    myLibrary.getPageTitle().should('have.text', 'My Learning')
+    myLibrary.getCourseName().should('exist').and('have.text', courseName)
 })

@@ -17,7 +17,8 @@ class EsewaPage{
         this.detailContact = ':nth-child(3) > .ep-content > .form-control'
         this.detailAddress = ':nth-child(4) > .ep-content > .form-control'
         this.detailEmail = ':nth-child(5) > .ep-content > .form-control'
-        this.contPayBtn = 'button'
+        this.contPayBtn = '.btn-success'
+        this.confirmPayment = '#ePayPayment'
     }
 
     getESewaVerify(){
@@ -105,6 +106,11 @@ class EsewaPage{
     getContPayBtn(){
         const contPayBtn = cy.get(this.contPayBtn)
         return contPayBtn
+    }
+
+    getConfirmPayment(){
+        const confirmPayment = cy.get(this.confirmPayment)
+        return confirmPayment
     }
 }
 
