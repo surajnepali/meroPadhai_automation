@@ -54,7 +54,7 @@ When('user selects the course {string}', (courseName) => {
             cy.wrap($el).find('.css-6y3qij').click()
         }
     })
-    cy.get('h1.css-d36phq').should('exist').contains(courseName)
+    courseDetailsPage.getCourseTitle().should('exist').contains(courseName)
 })
 
 When('user clicks on the buy now button', () => {
@@ -68,9 +68,9 @@ When('user clicks on the buy now button', () => {
 
 When('user choses course pricing for {string} and continues', (month) => {
     if(courseDetailsPage.getDropdown().select(month)){
-        courseDetailsPage.getPrice().should('exist').and('have.text', 'Rs. 4')
+        courseDetailsPage.getPrice().should('exist').and('have.text', 'Rs. 200')
     }
-    if(courseDetailsPage.getContinueBtn().contains('Rs.4')){
+    if(courseDetailsPage.getContinueBtn().contains('Rs.200')){
         cy.log("Continue button is enabled")
         courseDetailsPage.getContinueBtn().click()
     }

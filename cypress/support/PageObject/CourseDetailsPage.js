@@ -2,6 +2,7 @@ class CourseDetailsPage{
 
     constructor(){
         this.title = '.css-10igdfz > .css-d36phq'
+        this.courseTitle = 'h1.css-d36phq'
         this.buyNowButton = '.css-185xt85 > .css-1yrfiy8'
         this.pricePopUp = '#chakra-modal-9'
         this.wishlistButton = '.css-1symmn5'
@@ -15,6 +16,11 @@ class CourseDetailsPage{
     coursePageTitle(){
         const title = cy.get(this.title)
         return title
+    }
+
+    getCourseTitle(){
+        const courseTitle = cy.get(this.courseTitle)
+        return courseTitle
     }
 
     getBuyNowBtn(){
