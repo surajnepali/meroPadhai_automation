@@ -4,7 +4,7 @@ class LogHomePage{
         this.title = '.css-gxanvf > .chakra-heading'
         this.succesfulLogin = 'div.ct-text' 
         this.explore = '.css-8p37wn > a:nth-child(1)'
-        this.library
+        this.library = '.css-8p37wn > a:nth-child(3)'
     }
 
     pageTitle(){
@@ -20,6 +20,11 @@ class LogHomePage{
     exploreBtn(){
         const explore = cy.get(this.explore)
         return explore
+    }
+
+    libraryBtn(){
+        const library = cy.get(this.library)
+        return library
     }
 
 }
