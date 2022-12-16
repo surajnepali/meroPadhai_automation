@@ -14,4 +14,4 @@ Feature: Buy a course from the meropadhai.com website
     Then user is redirected to meropadhai website and '<courseName>' is bought
     Examples:
     | email                   | password | courseName                             | month | eSewaId       | eSewaPassword |
-    | ravila9384@fanneat.com  | password | Fundamentals of Financial Management   | 1     | 9806762451    | 2380          |
+    | ravila9384@fanneat.com  | password | Fundamentals of Financial Management   | 1     | 8888888888    | ****          |
