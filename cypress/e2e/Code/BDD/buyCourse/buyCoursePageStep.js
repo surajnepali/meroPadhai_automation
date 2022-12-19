@@ -39,8 +39,10 @@ When('user goes to login page and logs in with {string} and {string}', (email, p
 })
 
 When('user clicks on the explore button', () => {
-    logHomePage.exploreBtn().click()
-    cy.url().should('include', '/explore')
+    logHomePage.getVerifyPopUp().should('exist')
+    logHomePage.getSkipBtn().should('exist').contains('Skip').click()
+    logHomePage.coursesBtn().click()
+    cy.url().should('include', '/courses')
     explorePage.getPageTitle().should('have.text', 'Explore courses, topics and skills')
 })
 

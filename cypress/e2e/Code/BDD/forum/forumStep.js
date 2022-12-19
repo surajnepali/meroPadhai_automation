@@ -23,13 +23,15 @@ Given('user opens the meropadhai website', () => {
 When('user goes to login page and logs in with {string} and {string}', (email, password) => {
     homePage.getLoginButton().click()
     cy.url().should('include', '/auth/signin')
-    loginPage.getPageTitle().should('have.text', 'Sign in to continue')
+    loginPage.haveTitle().should('have.text', 'Sign in to continue')
     loginPage.fillEmail(email)
     loginPage.fillPassword(password)
     loginPage.submitBtn()
 })
 
-When('user clicks on the MyLibrary button', () => {
+When('user clicks on the My Library button', () => {
+    logHomePage.getVerifyPopUp().should('exist')
+    logHomePage.getSkipBtn().should('exist').contains('Skip').click()
     logHomePage.libraryBtn().click()
     cy.url().should('include', '/my-learning')
 })
@@ -69,4 +71,5 @@ Then('user should see the list of all queries of {string}', (course) => {
     // cy.location('hash').should('include', '#/forum')
     forumPage.getPageVerify().should('exist').and('have.text', 'Forum')
     forumPage.getCourseTitle().should('exist').and('have.text', course)
+    
 })

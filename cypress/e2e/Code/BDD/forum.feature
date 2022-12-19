@@ -5,7 +5,7 @@ Feature: All testcases of FORUM
 
     Scenario Outline: Click Publish button without writing any query
     When user goes to login page and logs in with '<email>' and '<password>'
-    And user clicks on the MyLibrary button
+    And user clicks on the My Library button
     And user selects the '<course>' and clicks it
     And user clicks on Forum module
     And user clicks on Publish button
@@ -16,7 +16,7 @@ Feature: All testcases of FORUM
 
     Scenario Outline: Click views all queries
     When user goes to login page and logs in with '<email>' and '<password>'
-    And user clicks on the MyLibrary button
+    And user clicks on the My Library button
     And user selects the '<course>' and clicks it
     And user clicks on Forum module
     And user clicks on Views all queries

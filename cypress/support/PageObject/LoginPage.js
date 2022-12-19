@@ -10,7 +10,7 @@ class LoginPage extends HomePage{
         
     }
 
-    havetitle(){
+    haveTitle(){
         const title = cy.get(this.title)
         return title
     }
