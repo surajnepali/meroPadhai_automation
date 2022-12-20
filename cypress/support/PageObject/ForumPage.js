@@ -3,7 +3,9 @@ class ForumPage{
     constructor(){
         this.pageVerify = ':nth-child(3) > .chakra-breadcrumb__link'
         this.courseTitle = '.css-gj2ina'
+        this.forumContainer = '.css-cyin89'
         this.queryContainer = '.css-keracv'
+
     }
 
     getPageVerify(){
@@ -14,6 +16,11 @@ class ForumPage{
     getCourseTitle(){
         const courseTitle = cy.get(this.courseTitle)
         return courseTitle
+    }
+
+    getForumContainer(){
+        const forumContainer = cy.get(this.forumContainer)
+        return forumContainer
     }
 
     getQueryContainer(){

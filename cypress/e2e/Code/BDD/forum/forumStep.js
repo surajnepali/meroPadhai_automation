@@ -14,6 +14,8 @@ const myLibrary = new MyLibrary()
 const courseWatchPage = new CourseWatchPage()
 const forumPage = new ForumPage()
 
+let count = 0
+
 Given('user opens the meropadhai website', () => {
     cy.viewport(1920, 1080)
     cy.visit(Cypress.env('url'))
@@ -71,5 +73,10 @@ Then('user should see the list of all queries of {string}', (course) => {
     // cy.location('hash').should('include', '#/forum')
     forumPage.getPageVerify().should('exist').and('have.text', 'Forum')
     forumPage.getCourseTitle().should('exist').and('have.text', course)
-    
+    forumPage.getForumContainer().find('.css-keracv').each(($el, index, $list) => {
+        const queryName = $el.find('.css-pm7iwl > .chakra-text').text()
+            count++
+    }).then(() => {
+        cy.log(count)
+    })
 })
