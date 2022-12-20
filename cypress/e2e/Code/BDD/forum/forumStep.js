@@ -77,6 +77,17 @@ Then('user should see the list of all queries of {string}', (course) => {
         const queryName = $el.find('.css-pm7iwl > .chakra-text').text()
             count++
     }).then(() => {
-        cy.log(count)
+        cy.log(count)   
     })
+})
+
+When('user writes the query in the text box and clicks on Views all queries', () => {
+    courseWatchPage.getQueryField().should('exist').type('This is a test query')
+    courseWatchPage.getViewAllQueriesBtn().should('exist').contains('View All Queries')
+    courseWatchPage.getViewAllQueriesBtn().click()
+})
+
+Then('user goes back and finds query textarea is cleared', () => {
+    cy.go('back')
+    courseWatchPage.getQueryField().should('exist').and('have.value', '')
 })

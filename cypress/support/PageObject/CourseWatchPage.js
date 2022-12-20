@@ -6,6 +6,10 @@ class CourseWatchPage{
         this.tableOfContent = '.css-wufdrj > .chakra-heading'
         this.forumBtn = '#tabs-14--tab-1'
         this.noteBtn = '#tabs-14--tab-2'
+        this.queryField = '.txt-area'
+        this.includeChapterPopUp = '#chakra-modal-11'
+        this.includeChapterNoBtn = '.css-10t9nh0 > :nth-child(1)'
+        this.includeChapterBtn = '.css-10t9nh0 > :nth-child(2)'
         this.queryPublishBtn = '.css-5bygcd > .chakra-button'
         this.toastMessage = '.ct-toast'
         this.chooseImage = '.css-3ehjyz > svg'
@@ -37,9 +41,29 @@ class CourseWatchPage{
         return noteBtn
     }
 
+    getQueryField() {
+        const queryField = cy.get(this.queryField)
+        return queryField
+    }
+
     getQueryPublishBtn() {
         const queryPublishBtn = cy.get(this.queryPublishBtn)
         return queryPublishBtn
+    }
+
+    getIncludeChapterPopUp() {
+        const includeChapterPopUp = cy.get(this.includeChapterPopUp)
+        return includeChapterPopUp
+    }
+
+    getIncludeChapterNoBtn() {
+        const includeChapterNoBtn = cy.get(this.includeChapterNoBtn)
+        return includeChapterNoBtn
+    }
+
+    getIncludeChapterBtn() {
+        const includeChapterBtn = cy.get(this.includeChapterBtn)
+        return includeChapterBtn
     }
 
     getToastMessage() {
