@@ -13,7 +13,7 @@ class CourseWatchPage{
         this.queryPublishBtn = '.css-5bygcd > .chakra-button'
         this.toastMessage = '.ct-toast'
         this.chooseImage = '.css-3ehjyz > svg'
-        this.viewAllQueries = '.css-vyj8pe > .chakra-text'
+        this.viewAllQueries = '.css-yy99bc'
     }
 
     getPageVerify() {

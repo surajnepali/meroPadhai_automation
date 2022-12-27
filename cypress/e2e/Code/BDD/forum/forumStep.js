@@ -6,6 +6,7 @@ const LogHomePage = require('../../../../support/PageObject/LogHomePage')
 const MyLibrary = require('../../../../support/PageObject/MyLibrary')
 const CourseWatchPage = require('../../../../support/PageObject/CourseWatchPage')
 const ForumPage = require('../../../../support/PageObject/ForumPage')
+const QueryPage = require('../../../../support/PageObject/QueryPage')
 
 const homePage = new HomePage()
 const loginPage = new LoginPage()
@@ -13,6 +14,7 @@ const logHomePage = new LogHomePage()
 const myLibrary = new MyLibrary()
 const courseWatchPage = new CourseWatchPage()
 const forumPage = new ForumPage()
+const queryPage = new QueryPage()
 
 let count = 0
 
@@ -69,16 +71,19 @@ Then('user should see the negative toast message', () => {
     courseWatchPage.getToastMessage().should('exist').contains('Please fill required field.')
 })
 
-Then('user should see the list of all queries of {string}', (course) => {
+Then('user sees all the queries associated with {string}', (course) => {
     // cy.location('hash').should('include', '#/forum')
     forumPage.getPageVerify().should('exist').and('have.text', 'Forum')
     forumPage.getCourseTitle().should('exist').and('have.text', course)
+
+    // counts the number of queries
     forumPage.getForumContainer().find('.css-keracv').each(($el, index, $list) => {
         const queryName = $el.find('.css-pm7iwl > .chakra-text').text()
             count++
     }).then(() => {
         cy.log(count)   
     })
+    count = 0
 })
 
 When('user writes the query in the text box and clicks on Views all queries', () => {
@@ -90,4 +95,16 @@ When('user writes the query in the text box and clicks on Views all queries', ()
 Then('user goes back and finds query textarea is cleared', () => {
     cy.go('back')
     courseWatchPage.getQueryField().should('exist').and('have.value', '')
+})
+
+Then('user clicks first query and sees the query', () => {
+    const queryNaam = forumPage.getForumContainer().find('p.chakra-text.css-ykhys7').eq(0)
+    queryNaam.click({force: true})
+    cy.wait(5000)
+    if(queryNaam == queryPage.getQueryName()){
+        queryPage.getQueryName().should('exist')
+        queryPage.getQueryDescription().should('exist')
+    }
+    // forumPage.getQueryTitle().should('exist')
+    // forumPage.getQueryDescription().should('exist')
 })

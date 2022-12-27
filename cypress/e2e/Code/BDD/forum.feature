@@ -20,7 +20,7 @@ Feature: All testcases of FORUM
     And user selects the '<course>' and clicks it
     And user clicks on Forum module
     And user clicks on Views all queries
-    Then user should see the list of all queries of '<course>'  
+    Then user sees all the queries associated with '<course>'  
     Examples:
     | email                     | password | course                                 |
     | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
@@ -32,6 +32,18 @@ Feature: All testcases of FORUM
     And user clicks on Forum module
     And user writes the query in the text box and clicks on Views all queries
     Then user goes back and finds query textarea is cleared
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+    Scenario Outline: See one of the query
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user clicks on Views all queries
+    And user sees all the queries associated with '<course>' 
+    Then user clicks first query and sees the query
     Examples:
     | email                     | password | course                                 |
     | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |

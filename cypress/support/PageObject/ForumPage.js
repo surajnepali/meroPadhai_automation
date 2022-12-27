@@ -5,6 +5,7 @@ class ForumPage{
         this.courseTitle = '.css-gj2ina'
         this.forumContainer = '.css-cyin89'
         this.queryContainer = '.css-keracv'
+        this.queryName = 'p.chakra-text.css-ykhys7'
 
     }
 
@@ -26,6 +27,11 @@ class ForumPage{
     getQueryContainer(){
         const queryContainer = cy.get(this.queryContainer)
         return queryContainer
+    }
+
+    getQueryName(){
+        const queryName = cy.get(this.queryName)
+        return queryName
     }
 
 }
