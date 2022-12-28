@@ -106,10 +106,28 @@ When('user writes the query, add an image and clicks on Publish button', () => {
     courseWatchPage.getQueryPublishBtn().click()
 })
 
+When('user selects an image and clicks on Publish button', () => {
+    courseWatchPage.getChooseImage().should('exist').selectFile('Frame 1000002049.png')
+    courseWatchPage.getUploadedImage().should('exist')
+    courseWatchPage.getQueryPublishBtn().should('exist').contains('Publish').click()
+})
+
+When('user selects an image and clicks on Views all queries', () => {
+    courseWatchPage.getChooseImage().should('exist').selectFile('Frame 1000002049.png')
+    courseWatchPage.getUploadedImage().should('exist')
+    courseWatchPage.getViewAllQueriesBtn().should('exist').contains('View All Queries').click()
+})
+
 Then('user goes back and finds query textarea is cleared', () => {
     cy.wait(5000)
     cy.go('back')
     courseWatchPage.getQueryField().should('exist').and('have.value', '')
+})
+
+Then('user goes back and finds selected image is cleared', () => {
+    cy.wait(5000)
+    cy.go('back')
+    courseWatchPage.getUploadedImage().should('not.exist')
 })
 
 Then('user clicks first query and sees the query', () => {
