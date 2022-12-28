@@ -6,6 +6,12 @@ class ForumPage{
         this.forumContainer = '.css-cyin89'
         this.queryContainer = '.css-keracv'
         this.queryName = 'p.chakra-text.css-ykhys7'
+        this.addCancelResponse = 'button.chakra-button.css-rdgal7'
+        this.responseContainer = '.css-1wchpuk'
+        this.responseField = '.txt-area'
+        this.chooseImage = 'div.chakra-input__group.css-4302v8'
+        this.publishResponseBtn = 'button.chakra-button.css-11ya3lz'
+        this.toastMessage = '.ct-toast'
 
     }
 
@@ -32,6 +38,36 @@ class ForumPage{
     getQueryName(){
         const queryName = cy.get(this.queryName)
         return queryName
+    }
+
+    getAddCancelResponse(){
+        const addCancelResponse = cy.get(this.addCancelResponse)
+        return addCancelResponse
+    }
+
+    getResponseContainer(){
+        const responseContainer = cy.get(this.responseContainer)
+        return responseContainer
+    }
+
+    getResponseField(){
+        const responseField = cy.get(this.responseField)
+        return responseField
+    }
+
+    getChooseImage(){
+        const chooseImage = cy.get(this.chooseImage)
+        return chooseImage
+    }
+
+    getPublishResponseBtn(){
+        const publishResponseBtn = cy.get(this.publishResponseBtn)
+        return publishResponseBtn
+    }
+
+    getToastMessage(){
+        const toastMessage = cy.get(this.toastMessage)
+        return toastMessage
     }
 
 }

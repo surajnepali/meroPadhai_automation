@@ -118,6 +118,25 @@ When('user selects an image and clicks on Views all queries', () => {
     courseWatchPage.getViewAllQueriesBtn().should('exist').contains('View All Queries').click()
 })
 
+When('user clicks on Add Response button of second query', () => {
+    forumPage.getForumContainer()
+        .find('.css-keracv')
+        .eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Add Response')
+        .click()
+})
+
+When('user clicks on Add Response button of second query and clicks Publish button', () => {
+    forumPage.getForumContainer()
+        .find('.css-keracv')
+        .eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Add Response')
+        .click()
+    forumPage.getPublishResponseBtn().should('exist').contains('Publish').click()
+})
+
 Then('user goes back and finds query textarea is cleared', () => {
     cy.wait(5000)
     cy.go('back')
@@ -152,4 +171,13 @@ Then('user does not include chapter name and should see the positive toast messa
     courseWatchPage.getIncludeChapterPopUp().should('exist')
     courseWatchPage.getIncludeChapterNoBtn().contains('No').click()
     courseWatchPage.getToastMessage().should('exist').contains('Your question has been sent to be reviewed.')
+})
+
+Then('the textarea for Response is opened', () => {
+    forumPage.getResponseContainer().should('exist')
+    forumPage.getResponseField().should('exist')
+})
+
+Then('user should see the negative toast message', () => {
+    forumPage.getToastMessage().should('exist').contains('Please fill required field.')
 })
