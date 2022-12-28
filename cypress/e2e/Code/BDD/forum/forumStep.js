@@ -153,4 +153,3 @@ Then('user does not include chapter name and should see the positive toast messa
     courseWatchPage.getIncludeChapterNoBtn().contains('No').click()
     courseWatchPage.getToastMessage().should('exist').contains('Your question has been sent to be reviewed.')
 })
-
