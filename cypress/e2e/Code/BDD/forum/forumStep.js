@@ -98,6 +98,14 @@ When('user writes the query in the text box and clicks on Publish button', () =>
     courseWatchPage.getQueryPublishBtn().click()
 })
 
+When('user writes the query, add an image and clicks on Publish button', () => {
+    courseWatchPage.getQueryField().should('exist').type('This is a test query')
+    courseWatchPage.getChooseImage().should('exist').selectFile('Frame 1000002049.png')
+    courseWatchPage.getUploadedImage().should('exist')
+    courseWatchPage.getQueryPublishBtn().should('exist').contains('Publish')
+    courseWatchPage.getQueryPublishBtn().click()
+})
+
 Then('user goes back and finds query textarea is cleared', () => {
     cy.wait(5000)
     cy.go('back')
@@ -121,3 +129,10 @@ Then('user includes chapter name and should see the positive toast message', () 
     courseWatchPage.getIncludeChapterBtn().contains('Yes').click()
     courseWatchPage.getToastMessage().should('exist').contains('Your question has been sent to be reviewed.')
 })
+
+Then('user does not include chapter name and should see the positive toast message', () => {
+    courseWatchPage.getIncludeChapterPopUp().should('exist')
+    courseWatchPage.getIncludeChapterNoBtn().contains('No').click()
+    courseWatchPage.getToastMessage().should('exist').contains('Your question has been sent to be reviewed.')
+})
+

@@ -12,7 +12,8 @@ class CourseWatchPage{
         this.includeChapterBtn = '.css-10t9nh0 > :nth-child(2)'
         this.queryPublishBtn = '.css-5bygcd > .chakra-button'
         this.toastMessage = '.ct-toast'
-        this.chooseImage = '.css-3ehjyz > svg'
+        this.chooseImage = '.css-3ehjyz'
+        this.uploadedImage = '.css-156036'
         this.viewAllQueries = '.css-yy99bc'
     }
 
@@ -74,6 +75,11 @@ class CourseWatchPage{
     getChooseImage() {
         const chooseImage = cy.get(this.chooseImage)
         return chooseImage
+    }
+
+    getUploadedImage() {
+        const uploadedImage = cy.get(this.uploadedImage)
+        return uploadedImage
     }
 
     getViewAllQueriesBtn() {
