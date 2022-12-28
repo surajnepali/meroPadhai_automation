@@ -6,7 +6,10 @@ class QueryPage{
         this.addResponse = '.css-1rv4e52 > .chakra-button'
         this.responseTextArea = '.txt-area'
         this.publishResponse = '.css-11ya3lz'
-        this.selectImage = '.css-3ehjyz > svg:nth-child(1)'
+        this.selectImage = '.css-3ehjyz > svg:nth-child(1)' //div.css-0:nth-child(3)
+        this.responseContainer = 'div.css-0:nth-child(3)'
+        this.aResponse = '.css-16g34o9'
+        this.responseReader = '.css-1hgneaz'
     }
 
     getQueryName(){
@@ -33,6 +36,18 @@ class QueryPage{
         return cy.get(this.selectImage)
     }
     
+    getResponseContainer(){
+        return cy.get(this.responseContainer)
+    }
+
+    getAResponse(){
+        return cy.get(this.aResponse)
+    }
+
+    getResponseReader(){
+        return cy.get(this.responseReader)
+    }
+
 }
 
 export default QueryPage

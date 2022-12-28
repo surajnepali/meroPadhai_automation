@@ -92,7 +92,14 @@ When('user writes the query in the text box and clicks on Views all queries', ()
     courseWatchPage.getViewAllQueriesBtn().click()
 })
 
+When('user writes the query in the text box and clicks on Publish button', () => {
+    courseWatchPage.getQueryField().should('exist').type('This is a test query')
+    courseWatchPage.getQueryPublishBtn().should('exist').contains('Publish')
+    courseWatchPage.getQueryPublishBtn().click()
+})
+
 Then('user goes back and finds query textarea is cleared', () => {
+    cy.wait(5000)
     cy.go('back')
     courseWatchPage.getQueryField().should('exist').and('have.value', '')
 })
@@ -107,4 +114,10 @@ Then('user clicks first query and sees the query', () => {
     }
     // forumPage.getQueryTitle().should('exist')
     // forumPage.getQueryDescription().should('exist')
+})
+
+Then('user includes chapter name and should see the positive toast message', () => {
+    courseWatchPage.getIncludeChapterPopUp().should('exist')
+    courseWatchPage.getIncludeChapterBtn().contains('Yes').click()
+    courseWatchPage.getToastMessage().should('exist').contains('Your question has been sent to be reviewed.')
 })
