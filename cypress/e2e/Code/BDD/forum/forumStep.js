@@ -87,10 +87,44 @@ When('user writes the query, add an image and clicks on Publish button', () => {
     courseWatchPage.getQueryPublishBtn().click()
 })
 
+When('user writes the query, add an image', () => {
+    courseWatchPage.getQueryField().should('exist').type('This is a test query')
+    courseWatchPage.getChooseImage().should('exist').selectFile('Frame 1000002049.png')
+    courseWatchPage.getUploadedImage().should('exist')
+})
+
+When('user removes an image and clicks on Publish button', () => {
+    courseWatchPage.getRemoveImage().should('exist').click()
+    courseWatchPage.getQueryPublishBtn().should('exist').contains('Publish')
+    courseWatchPage.getQueryPublishBtn().click()
+})
+
+When('user changes an image and clicks on Publish button', () => {
+    courseWatchPage.getChangeImage().should('exist').click()
+    courseWatchPage.getChooseImage().should('exist').selectFile('Frame 1000002049.png')
+    courseWatchPage.getUploadedImage().should('exist')
+    courseWatchPage.getQueryPublishBtn().should('exist').contains('Publish')
+    courseWatchPage.getQueryPublishBtn().click()
+})
+
 When('user selects an image and clicks on Publish button', () => {
     courseWatchPage.getChooseImage().should('exist').selectFile('Frame 1000002049.png')
     courseWatchPage.getUploadedImage().should('exist')
     courseWatchPage.getQueryPublishBtn().should('exist').contains('Publish').click()
+})
+
+When('user selects an image and clicks on cross button to remove it', () => {
+    courseWatchPage.getChooseImage().should('exist').selectFile('Frame 1000002049.png')
+    courseWatchPage.getUploadedImage().should('exist')
+    courseWatchPage.getRemoveImage().should('exist').click()
+})
+
+When('user selects an image and clicks on change button select another image', () => {
+    courseWatchPage.getChooseImage().should('exist').selectFile('Frame 1000002049.png')
+    courseWatchPage.getUploadedImage().should('exist')
+    courseWatchPage.getChangeImage().should('exist').click()
+    courseWatchPage.getChooseImage().should('exist').selectFile('Frame 1000002048.png')
+    courseWatchPage.getUploadedImage().should('exist')
 })
 
 When('user selects an image and clicks on Views all queries', () => {
@@ -281,6 +315,16 @@ Then('user goes back and finds selected image is cleared', () => {
     cy.wait(5000)
     cy.go('back')
     courseWatchPage.getUploadedImage().should('not.exist')
+})
+
+Then('user should see the image is removed', () => {
+    courseWatchPage.getQueryField().should('exist')
+    courseWatchPage.getUploadedImage().should('not.exist')
+})
+
+Then('user should see the image is changed', () => {
+    courseWatchPage.getQueryField().should('exist')
+    courseWatchPage.getUploadedImage().should('exist')
 })
 
 Then('user clicks first query and sees the query', () => {

@@ -39,6 +39,30 @@ Feature: All testcases of FORUM
     | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
 
 
+    Scenario Outline: Select an image and remove it
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user selects an image and clicks on cross button to remove it
+    Then user should see the image is removed
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Select an image and change image
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user selects an image and clicks on change button select another image
+    Then user should see the image is changed
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
     Scenario Outline: Select an image, click View All Queries, and go back, selected image is cleared
     When user goes to login page and logs in with '<email>' and '<password>'
     And user clicks on the My Library button
@@ -94,6 +118,32 @@ Feature: All testcases of FORUM
     And user clicks on Forum module
     And user writes the query, add an image and clicks on Publish button
     Then user does not include chapter name and should see the positive toast message
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Write query, select image, remove image, click Publish including chapter name.
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user writes the query, add an image 
+    And user removes an image and clicks on Publish button
+    Then user includes chapter name and should see the positive toast message
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Write query, select image, change image, click Publish including chapter name.
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user writes the query, add an image 
+    And user changes an image and clicks on Publish button
+    Then user includes chapter name and should see the positive toast message
     Examples:
     | email                     | password | course                                 |
     | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |

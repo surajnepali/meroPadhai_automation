@@ -14,6 +14,8 @@ class CourseWatchPage{
         this.toastMessage = '.ct-toast'
         this.chooseImage = '.css-3ehjyz'
         this.uploadedImage = '.css-156036'
+        this.removeImage = '.css-3fim88 > svg:nth-child(1)'
+        this.changeImage = 'label.css-3ehjyz'
         this.viewAllQueries = '.css-yy99bc'
     }
 
@@ -80,6 +82,16 @@ class CourseWatchPage{
     getUploadedImage() {
         const uploadedImage = cy.get(this.uploadedImage)
         return uploadedImage
+    }
+
+    getRemoveImage() {
+        const removeImage = cy.get(this.removeImage)
+        return removeImage
+    }
+
+    getChangeImage() {
+        const changeImage = cy.get(this.changeImage)
+        return changeImage
     }
 
     getViewAllQueriesBtn() {
