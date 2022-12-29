@@ -67,25 +67,6 @@ When('user clicks on Views all queries', () => {
     courseWatchPage.getViewAllQueriesBtn().click()
 })
 
-Then('user should see the negative toast message', () => {
-    courseWatchPage.getToastMessage().should('exist').contains('Please fill required field.')
-})
-
-Then('user sees all the queries associated with {string}', (course) => {
-    // cy.location('hash').should('include', '#/forum')
-    forumPage.getPageVerify().should('exist').and('have.text', 'Forum')
-    forumPage.getCourseTitle().should('exist').and('have.text', course)
-
-    // counts the number of queries
-    forumPage.getForumContainer().find('.css-keracv').each(($el, index, $list) => {
-        const queryName = $el.find('.css-pm7iwl > .chakra-text').text()
-            count++
-    }).then(() => {
-        cy.log(count)   
-    })
-    count = 0
-})
-
 When('user writes the query in the text box and clicks on Views all queries', () => {
     courseWatchPage.getQueryField().should('exist').type('This is a test query')
     courseWatchPage.getViewAllQueriesBtn().should('exist').contains('View All Queries')
@@ -137,6 +118,159 @@ When('user clicks on Add Response button of second query and clicks Publish butt
     forumPage.getPublishResponseBtn().should('exist').contains('Publish').click()
 })
 
+When('user clicks on Add Response button of second query and selects an image and clicks Publish button', () => {
+    forumPage.getForumContainer()
+        .find('.css-keracv')
+        .eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Add Response')
+        .click()
+    forumPage.getChooseImage().should('exist').selectFile('Frame 1000002049.png')
+    forumPage.getUploadedImage().should('exist')
+    forumPage.getPublishResponseBtn().should('exist').contains('Publish').click()
+})
+
+When('user clicks on Add Response button of second query and writes response and clicks Publish button', () => {
+    forumPage.getForumContainer()
+        .find('.css-keracv')
+        .eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Add Response')
+        .click()
+    forumPage.getResponseField().should('exist').type('This is a test response')
+    forumPage.getPublishResponseBtn().should('exist').contains('Publish').click()
+    forumPage.getForumContainer()
+        .find('.css-keracv')
+        .eq(1)
+        .find('.txt-area')
+        .should('not.exist')
+})
+
+When('user clicks on Add Response button of second query and writes response, selects an image and clicks Publish button', () => {
+    forumPage.getForumContainer()
+        .find('.css-keracv')
+        .eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Add Response')
+        .click()
+    forumPage.getResponseField().should('exist').type('This is a test response')
+    forumPage.getChooseImage().should('exist').selectFile('Frame 1000002049.png')
+    forumPage.getUploadedImage().should('exist')
+    forumPage.getPublishResponseBtn().should('exist').contains('Publish').click()
+    forumPage.getForumContainer()
+        .find('.css-keracv')
+        .eq(1)
+        .find('.txt-area')
+        .should('not.exist')
+})
+
+When('user clicks on Add Response button of second query and clicks Cancel Response button', () => {
+    forumPage.getForumContainer()
+        .find('.css-keracv')
+        .eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Add Response')
+        .click()
+    forumPage.getResponseContainer().should('exist')
+    forumPage.getResponseField().should('exist')
+    forumPage.getAddCancelResponse().should('exist').contains('Cancel Response').click()
+})
+
+When('user clicks on Add Response button of second query and writes response, clicks Cancel Response button and again clicks Add Response button', () => {
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Add Response')
+        .click()
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.css-1wchpuk')
+        .should('exist')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.txt-area')
+        .should('exist')
+        .type('This is a test response')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Cancel Response')
+        .click()
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Add Response')
+        .click()
+})
+
+When('user clicks on Add Response button of second query and selects an image, clicks Cancel Response button and again clicks Add Response button', () => {
+    
+    const forumName = forumPage.getForumContainer().find('.css-keracv').eq(1)
+    
+    forumName.find('button.chakra-button.css-rdgal7').contains('Add Response').click()
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.css-1wchpuk')
+        .should('exist')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.css-3ehjyz')
+        .should('exist')
+        .selectFile('Frame 1000002049.png')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.css-156036')
+        .should('exist')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Cancel Response')
+        .click()
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Add Response')
+        .click()
+})
+
+When('user clicks on Add Response button of second query and writes response, selects an image, clicks Cancel Response button and again clicks Add Response button', () => {
+        
+        forumPage.getForumContainer().find('.css-keracv').eq(1)
+            .find('button.chakra-button.css-rdgal7')
+            .contains('Add Response')
+            .click()
+        forumPage.getForumContainer().find('.css-keracv').eq(1)
+            .find('.css-1wchpuk')
+            .should('exist')
+        forumPage.getForumContainer().find('.css-keracv').eq(1)
+            .find('.txt-area')
+            .should('exist')
+            .type('This is a test response')
+        forumPage.getForumContainer().find('.css-keracv').eq(1)
+            .find('.css-3ehjyz')
+            .should('exist')
+            .selectFile('Frame 1000002049.png')
+        forumPage.getForumContainer().find('.css-keracv').eq(1)
+            .find('.css-156036')
+            .should('exist')
+        forumPage.getForumContainer().find('.css-keracv').eq(1)
+            .find('button.chakra-button.css-rdgal7')
+            .contains('Cancel Response')
+            .click()
+        forumPage.getForumContainer().find('.css-keracv').eq(1)
+            .find('button.chakra-button.css-rdgal7')
+            .contains('Add Response')
+            .click()
+})
+
+Then('user should see the negative toast message', () => {
+    courseWatchPage.getToastMessage().should('exist').contains('Please fill required field.')
+})
+
+Then('user sees all the queries associated with {string}', (course) => {
+    forumPage.getPageVerify().should('exist').and('have.text', 'Forum')
+    forumPage.getCourseTitle().should('exist').and('have.text', course)
+
+    // counts the number of queries
+    forumPage.getForumContainer().find('.css-keracv').each(($el, index, $list) => {
+        const queryName = $el.find('.css-pm7iwl > .chakra-text').text()
+            count++
+    }).then(() => {
+        cy.log(count)   
+    })
+    count = 0
+})
+
 Then('user goes back and finds query textarea is cleared', () => {
     cy.wait(5000)
     cy.go('back')
@@ -157,8 +291,6 @@ Then('user clicks first query and sees the query', () => {
         queryPage.getQueryName().should('exist')
         queryPage.getQueryDescription().should('exist')
     }
-    // forumPage.getQueryTitle().should('exist')
-    // forumPage.getQueryDescription().should('exist')
 })
 
 Then('user includes chapter name and should see the positive toast message', () => {
@@ -178,6 +310,57 @@ Then('the textarea for Response is opened', () => {
     forumPage.getResponseField().should('exist')
 })
 
-Then('user should see the negative toast message', () => {
+Then('user should see the negative toast message on Forum Page', () => {
     forumPage.getToastMessage().should('exist').contains('Please fill required field.')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.txt-area')
+        .should('exist')
+})
+
+Then('user should see the positive toast message on Forum Page', () => {
+    forumPage.getToastMessage().should('exist').contains('Your answer has been sent to be reviewed.')
+})
+
+Then('the textarea for Response is closed', () => {
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.css-1wchpuk')
+        .should('not.exist')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.txt-area')
+        .should('not.exist')
+})
+
+Then('the textarea for Response is opened and the written response is cleared', () => {
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.css-1wchpuk')
+        .should('exist')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.txt-area')
+        .should('exist')
+        .and('have.value', '')
+})
+
+Then('the textarea for Response is opened and the selected image is removed', () => {
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.css-1wchpuk')
+        .should('exist')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.txt-area')
+        .should('exist')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.css-156036')
+        .should('not.exist')
+})
+
+Then('the textarea for Response is opened and the written response and selected image is removed', () => {
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.css-1wchpuk')
+        .should('exist')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.txt-area')
+        .should('exist')
+        .and('have.value', '')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.css-156036')
+        .should('not.exist')
 })

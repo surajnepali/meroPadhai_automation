@@ -146,7 +146,105 @@ Feature: All testcases of FORUM
     And user clicks on Views all queries
     And user sees all the queries associated with '<course>'
     And user clicks on Add Response button of second query and clicks Publish button
-    Then user should see the negative toast message
+    Then user should see the negative toast message on Forum Page
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Click on Add Response button of second query and select image and click Publish
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user clicks on Views all queries
+    And user sees all the queries associated with '<course>'
+    And user clicks on Add Response button of second query and selects an image and clicks Publish button
+    Then user should see the negative toast message on Forum Page
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Click on Add Response button of second query and write response and click Publish
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user clicks on Views all queries
+    And user sees all the queries associated with '<course>'
+    And user clicks on Add Response button of second query and writes response and clicks Publish button
+    Then user should see the positive toast message on Forum Page
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Click on Add Response button of second query and write response, selects an image and click Publish
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user clicks on Views all queries
+    And user sees all the queries associated with '<course>'
+    And user clicks on Add Response button of second query and writes response, selects an image and clicks Publish button
+    Then user should see the positive toast message on Forum Page
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Click on Add Response button of second query and click Cancel Response
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user clicks on Views all queries
+    And user sees all the queries associated with '<course>'
+    And user clicks on Add Response button of second query and clicks Cancel Response button
+    Then the textarea for Response is closed
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Click on Add Response button of second query, writes response, click Cancel Response and again click Add Response
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user clicks on Views all queries
+    And user sees all the queries associated with '<course>'
+    And user clicks on Add Response button of second query and writes response, clicks Cancel Response button and again clicks Add Response button
+    Then the textarea for Response is opened and the written response is cleared
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Click on Add Response button of second query, selects an image, click Cancel Response and again click Add response
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user clicks on Views all queries
+    And user sees all the queries associated with '<course>'
+    And user clicks on Add Response button of second query and selects an image, clicks Cancel Response button and again clicks Add Response button
+    Then the textarea for Response is opened and the selected image is removed
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Click on Add Response button of second query, writes response, selects an image, click Cancel Response and again click Add response
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user clicks on Views all queries
+    And user sees all the queries associated with '<course>'
+    And user clicks on Add Response button of second query and writes response, selects an image, clicks Cancel Response button and again clicks Add Response button
+    Then the textarea for Response is opened and the written response and selected image is removed
     Examples:
     | email                     | password | course                                 |
     | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |

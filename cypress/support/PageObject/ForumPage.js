@@ -9,7 +9,8 @@ class ForumPage{
         this.addCancelResponse = 'button.chakra-button.css-rdgal7'
         this.responseContainer = '.css-1wchpuk'
         this.responseField = '.txt-area'
-        this.chooseImage = 'div.chakra-input__group.css-4302v8'
+        this.chooseImage = '.css-3ehjyz'
+        this.uploadedImage = '.css-156036'
         this.publishResponseBtn = 'button.chakra-button.css-11ya3lz'
         this.toastMessage = '.ct-toast'
 
@@ -58,6 +59,11 @@ class ForumPage{
     getChooseImage(){
         const chooseImage = cy.get(this.chooseImage)
         return chooseImage
+    }
+
+    getUploadedImage(){
+        const uploadedImage = cy.get(this.uploadedImage)
+        return uploadedImage
     }
 
     getPublishResponseBtn(){
