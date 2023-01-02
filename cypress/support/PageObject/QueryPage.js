@@ -1,15 +1,17 @@
 class QueryPage{
 
     constructor(){
-        this.queryName = '.css-ykhys7'
+        this.queryName = 'p.chakra-text.css-ykhys7'
         this.queryDltBtn = '.css-asvefe > svg'
-        this.addResponse = '.css-1rv4e52 > .chakra-button'
-        this.responseTextArea = '.txt-area'
+        this.addCancelResponse = 'button.chakra-button.css-rdgal7'
+        this.responseContainer = '.css-1wchpuk'
+        this.responseField = '.txt-area'
         this.publishResponse = '.css-11ya3lz'
-        this.selectImage = '.css-3ehjyz > svg:nth-child(1)' //div.css-0:nth-child(3)
-        this.responseContainer = 'div.css-0:nth-child(3)'
+        this.selectImage = '.css-3ehjyz'
+        this.uploadedImage = '.css-156036'
         this.aResponse = '.css-16g34o9'
         this.responseReader = '.css-1hgneaz'
+        this.toastMessage = '.ct-toast'
     }
 
     getQueryName(){
@@ -20,12 +22,16 @@ class QueryPage{
         return cy.get(this.queryDltBtn)
     }
 
-    getAddResponse(){
-        return cy.get(this.addResponse)
+    getAddCancelResponse(){
+        return cy.get(this.addCancelResponse)
     }
 
-    getResponseTextArea(){
-        return cy.get(this.responseTextArea)
+    getResponseContainer(){
+        return cy.get(this.responseContainer)
+    }
+
+    getResponseField(){
+        return cy.get(this.responseField)
     }
 
     getPublishResponse(){
@@ -36,12 +42,12 @@ class QueryPage{
         return cy.get(this.selectImage)
     }
     
-    getResponseContainer(){
-        return cy.get(this.responseContainer)
-    }
-
     getAResponse(){
         return cy.get(this.aResponse)
+    }
+
+    getUploadedImage(){
+        return cy.get(this.uploadedImage)
     }
 
     getResponseReader(){

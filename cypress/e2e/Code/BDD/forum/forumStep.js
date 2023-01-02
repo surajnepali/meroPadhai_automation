@@ -17,6 +17,8 @@ const forumPage = new ForumPage()
 const queryPage = new QueryPage()
 
 let count = 0
+let queryName = ""
+let qName = ""
 
 Given('user opens the meropadhai website', () => {
     cy.viewport(1920, 1080)
@@ -258,33 +260,125 @@ When('user clicks on Add Response button of second query and selects an image, c
 })
 
 When('user clicks on Add Response button of second query and writes response, selects an image, clicks Cancel Response button and again clicks Add Response button', () => {
-        
-        forumPage.getForumContainer().find('.css-keracv').eq(1)
-            .find('button.chakra-button.css-rdgal7')
-            .contains('Add Response')
-            .click()
-        forumPage.getForumContainer().find('.css-keracv').eq(1)
-            .find('.css-1wchpuk')
-            .should('exist')
-        forumPage.getForumContainer().find('.css-keracv').eq(1)
-            .find('.txt-area')
-            .should('exist')
-            .type('This is a test response')
-        forumPage.getForumContainer().find('.css-keracv').eq(1)
-            .find('.css-3ehjyz')
-            .should('exist')
-            .selectFile('Frame 1000002049.png')
-        forumPage.getForumContainer().find('.css-keracv').eq(1)
-            .find('.css-156036')
-            .should('exist')
-        forumPage.getForumContainer().find('.css-keracv').eq(1)
-            .find('button.chakra-button.css-rdgal7')
-            .contains('Cancel Response')
-            .click()
-        forumPage.getForumContainer().find('.css-keracv').eq(1)
-            .find('button.chakra-button.css-rdgal7')
-            .contains('Add Response')
-            .click()
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Add Response')
+        .click()
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.css-1wchpuk')
+        .should('exist')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.txt-area')
+        .should('exist')
+        .type('This is a test response')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.css-3ehjyz')
+        .should('exist')
+        .selectFile('Frame 1000002049.png')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('.css-156036')
+        .should('exist')
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Cancel Response')
+        .click()
+    forumPage.getForumContainer().find('.css-keracv').eq(1)
+        .find('button.chakra-button.css-rdgal7')
+        .contains('Add Response')
+        .click()
+})
+
+When('user clicks first query and clicks Add Response button', () => {
+    forumPage.getForumContainer().find('p.chakra-text.css-ykhys7').eq(0).then(($el) => {
+        queryName = $el.text()
+    })
+    forumPage.getForumContainer()
+        .find('div.css-keracv')
+        .eq(0)
+        .find('p.chakra-text.css-ykhys7')
+        .click({force: true})
+    cy.wait(2500)
+    queryPage.getQueryName().then(($el) => {
+        qName = $el.text()
+        expect(queryName).to.equal(qName)
+    })
+    cy.url().should('contain', '?courseId=6384901e721f354c584f0181')
+    queryPage.getAddCancelResponse().should('exist').contains('Add Response').click({force: true})
+})
+
+When('user clicks first query, clicks Add Response button and clicks Cancel Response button', () => {
+    forumPage.getForumContainer().find('p.chakra-text.css-ykhys7').eq(0).then(($el) => {
+        queryName = $el.text()
+    })
+    forumPage.getForumContainer()
+        .find('div.css-keracv')
+        .eq(0)
+        .find('p.chakra-text.css-ykhys7')
+        .click({force: true})
+    cy.wait(2500)
+    queryPage.getQueryName().then(($el) => {
+        qName = $el.text()
+        expect(queryName).to.equal(qName)
+    })
+    cy.url().should('contain', '?courseId=6384901e721f354c584f0181')
+    queryPage.getAddCancelResponse().should('exist').contains('Add Response').click({force: true})
+    queryPage.getAddCancelResponse().should('exist').contains('Cancel Response').click({force: true})
+})
+
+When('user clicks first query, clicks Add Response button, writes response and clicks Cancel Response button', () => {
+    forumPage.getForumContainer().find('p.chakra-text.css-ykhys7').eq(0).then(($el) => {
+        queryName = $el.text()
+    })
+    forumPage.getForumContainer()
+        .find('div.css-keracv')
+        .eq(0)
+        .find('p.chakra-text.css-ykhys7')
+        .click({force: true})
+    cy.wait(2500)
+    queryPage.getQueryName().then(($el) => {
+        qName = $el.text()
+        expect(queryName).to.equal(qName)
+    })
+    cy.url().should('contain', '?courseId=6384901e721f354c584f0181')
+    queryPage.getAddCancelResponse()
+        .should('exist')
+        .contains('Add Response')
+        .click({force: true})
+    queryPage.getResponseField()
+    .should('exist')
+    .click({force: true})
+    .type('This is a test response')
+    queryPage.getAddCancelResponse().should('exist').contains('Cancel Response').click({force: true})
+})
+
+When('user clicks first query, clicks Add Response button, selects an image and clicks Cancel Response button', () => {
+    forumPage.getForumContainer().find('p.chakra-text.css-ykhys7').eq(0).then(($el) => {
+        queryName = $el.text()
+    })
+    forumPage.getForumContainer()
+        .find('div.css-keracv')
+        .eq(0)
+        .find('p.chakra-text.css-ykhys7')
+        .click({force: true})
+    cy.wait(2500)
+    queryPage.getQueryName().then(($el) => {
+        qName = $el.text()
+        expect(queryName).to.equal(qName)
+    })
+    cy.url().should('contain', '?courseId=6384901e721f354c584f0181')
+    queryPage.getAddCancelResponse()
+        .should('exist')
+        .contains('Add Response')
+        .click({force: true})
+    queryPage.getSelectImage()
+        .should('exist')
+        .selectFile('Frame 1000002049.png', {force: true})
+    queryPage.getUploadedImage()
+        .should('exist')
+    queryPage.getAddCancelResponse()
+        .should('exist')
+        .contains('Cancel Response')
+        .click({force: true})
 })
 
 Then('user should see the negative toast message', () => {
@@ -328,13 +422,21 @@ Then('user should see the image is changed', () => {
 })
 
 Then('user clicks first query and sees the query', () => {
-    const queryNaam = forumPage.getForumContainer().find('p.chakra-text.css-ykhys7').eq(0)
-    queryNaam.click({force: true})
-    cy.wait(5000)
-    if(queryNaam == queryPage.getQueryName()){
-        queryPage.getQueryName().should('exist')
-        queryPage.getQueryDescription().should('exist')
-    }
+    let queryName, qName
+    forumPage.getForumContainer().find('p.chakra-text.css-ykhys7').eq(0).then(($el) => {
+        queryName = $el.text()
+    })
+    forumPage.getForumContainer()
+        .find('div.css-keracv')
+        .eq(0)
+        .find('p.chakra-text.css-ykhys7')
+        .click({force: true})
+    cy.wait(2500)
+    queryPage.getQueryName().then(($el) => {
+        qName = $el.text()
+        expect(queryName).to.equal(qName)
+    })
+    cy.url().should('contain', '?courseId=6384901e721f354c584f0181')
 })
 
 Then('user includes chapter name and should see the positive toast message', () => {
@@ -407,4 +509,25 @@ Then('the textarea for Response is opened and the written response and selected 
     forumPage.getForumContainer().find('.css-keracv').eq(1)
         .find('.css-156036')
         .should('not.exist')
+})
+
+Then('the textarea for Response is opened in Query Page', () => {
+    queryPage.getResponseContainer().should('exist')
+    queryPage.getResponseField().should('exist')
+})
+
+Then('the textarea for Response is closed in Query Page', () => {
+    queryPage.getResponseContainer().should('not.exist')
+    queryPage.getResponseField().should('not.exist')
+})
+
+Then('user clicks Add Response button and the written response is removed', () => {
+    queryPage.getAddCancelResponse().should('exist').contains('Add Response').click({force: true})
+    queryPage.getResponseField().should('exist').and('have.value', '')
+})
+
+Then('user clicks Add Response button and the selected image is removed', () => {
+    queryPage.getAddCancelResponse().should('exist').contains('Add Response').click({force: true})
+    queryPage.getResponseField().should('exist')
+    queryPage.getUploadedImage().should('not.exist')
 })
