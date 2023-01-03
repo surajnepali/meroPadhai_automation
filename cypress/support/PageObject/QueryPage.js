@@ -12,6 +12,7 @@ class QueryPage{
         this.aResponse = '.css-16g34o9'
         this.responseReader = '.css-1hgneaz'
         this.toastMessage = '.ct-toast'
+        this.noOfResponses = '.css-4g6ai3'
     }
 
     getQueryName(){
@@ -56,6 +57,10 @@ class QueryPage{
 
     getToastMessage(){
         return cy.get(this.toastMessage)
+    }
+
+    getNoOfResponses(){
+        return cy.get(this.noOfResponses)
     }
 
 }

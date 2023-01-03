@@ -673,3 +673,31 @@ Then('positive toast message should be appeared in Query Page', () => {
     queryPage.getResponseContainer().should('not.exist')
     queryPage.getResponseField().should('not.exist')
 })
+
+Then('user clicks first query and user sees all the responses associated with the query', () => {
+    let queryName, qName
+    forumPage.getForumContainer().find('p.chakra-text.css-ykhys7').eq(0).then(($el) => {
+        queryName = $el.text()
+    })
+    forumPage.getForumContainer()
+        .find('div.css-keracv')
+        .eq(0)
+        .find('p.chakra-text.css-ykhys7')
+        .click({force: true})
+    cy.wait(2500)
+    queryPage.getQueryName().then(($el) => {
+        qName = $el.text()
+        expect(queryName).to.equal(qName)
+    })
+    cy.url().should('contain', '?courseId=6384901e721f354c584f0181')
+    queryPage.getNoOfResponses().then(($el) => {
+        const respNum = $el.text()
+        const Num = Number(respNum)
+        cy.log(Num)
+        if (Num == 0) {
+            queryPage.getResponseReader().should('exist').contains('No responses yet')
+            queryPage.getAResponse().should('not.exist')
+        } else {
+            queryPage.getResponseReader().should('exist').contains('No more responses to load')
+        }})
+})
