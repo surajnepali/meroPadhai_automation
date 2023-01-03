@@ -325,7 +325,7 @@ Feature: All testcases of FORUM
     Then the textarea for Response is closed in Query Page
     Examples:
     | email                     | password | course                                 |
-    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+    | ravila9384@fannea     t.com    | password | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select a query, click Add Response, write response, and click Cancel Response
