@@ -54,6 +54,10 @@ class QueryPage{
         return cy.get(this.responseReader)
     }
 
+    getToastMessage(){
+        return cy.get(this.toastMessage)
+    }
+
 }
 
 export default QueryPage

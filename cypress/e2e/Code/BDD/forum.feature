@@ -354,3 +354,59 @@ Feature: All testcases of FORUM
     Examples:
     | email                     | password | course                                 |
     | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Select a query, click Add Response, write response, select an image, and click Cancel Response
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user clicks on Views all queries
+    And user sees all the queries associated with '<course>'
+    And user clicks first query, clicks Add Response button, writes response, selects an image and clicks Cancel Response button
+    Then user clicks Add Response button and the written response and selected image is removed
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Select a query, click Add Response, select an image, and publish
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user clicks on Views all queries
+    And user sees all the queries associated with '<course>'
+    And user clicks first query, clicks Add Response button, selects an image and clicks Publish button
+    Then negative toast message should be appeared in Query Page
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Select a query, click Add Response, write response, and publish
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user clicks on Views all queries
+    And user sees all the queries associated with '<course>'
+    And user clicks first query, clicks Add Response button, writes response and clicks Publish button
+    Then positive toast message should be appeared in Query Page
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
+
+
+    Scenario Outline: Select a query, click Add Response, write response, select an image, and publish
+    When user goes to login page and logs in with '<email>' and '<password>'
+    And user clicks on the My Library button
+    And user selects the '<course>' and clicks it
+    And user clicks on Forum module
+    And user clicks on Views all queries
+    And user sees all the queries associated with '<course>'
+    And user clicks first query, clicks Add Response button, writes response, selects an image and clicks Publish button
+    Then positive toast message should be appeared in Query Page
+    Examples:
+    | email                     | password | course                                 |
+    | ravila9384@fanneat.com    | password | Fundamentals of Financial Management   |
