@@ -5,7 +5,7 @@ class HomePage{
         this.aboutUsButton = '.css-8p37wn > [href="/about-us"]'
         this.contactButton = '.css-8p37wn > [href="/contact"]'
         this.loginButton = '[href="/auth/signin"] > .chakra-button'
-        this.signUpButton = '[href="/auth/signup"] > .chakra-button'
+        this.registerButton = 'button.chakra-button.css-130q45a'
     }
 
     getPageTitle(){
@@ -28,8 +28,8 @@ class HomePage{
         return cy.get(this.loginButton)
     }
 
-    getSignUpButton(){
-        return cy.get(this.signUpButton)
+    getRegisterButton(){
+        return cy.get(this.registerButton)
     }
 }
 

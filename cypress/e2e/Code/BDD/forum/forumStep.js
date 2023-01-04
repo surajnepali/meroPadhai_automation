@@ -21,7 +21,6 @@ let queryName = ""
 let qName = ""
 
 Given('user opens the meropadhai website', () => {
-    cy.viewport(1920, 1080)
     cy.visit(Cypress.env('url'))
     homePage.getPageTitle().should('have.text', 'Learn all courses at home.')
 })

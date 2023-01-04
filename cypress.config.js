@@ -6,6 +6,9 @@ module.exports = defineConfig({
   chromeWebSecurity: false,
   defaultCommandTimeout: 8000,
   pageLoadTimeout: 30000,
+  viewportHeight: 1080,
+  viewportWidth: 1920,
+  experimentalSessionAndOrigin: true,
   env: {
     url: "https://meropadhai.com",
   },
