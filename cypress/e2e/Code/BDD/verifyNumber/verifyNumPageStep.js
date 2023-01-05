@@ -86,6 +86,17 @@ When('user checks whether the entered {string} is saved in contact field of prof
     cy.wait(2500)
 })
 
+When('user types already used {string} in phone number field', (phone) => {
+    logHomePage.getContactField().should('exist').type(phone)
+})
+
+When('user clicks Verify button and sees error message', (phone) => {
+    logHomePage.getVerifyContact().should('exist').contains('Verify').click()
+    logHomePage.getToastMessage().should('exist').contains("Phone Number already used.")
+    logHomePage.getSkipBtn().should('exist').contains('Skip').click()
+
+})
+
 When('user clicks Verify button for {string} and verify the phone number', (phone) => {
     logHomePage.getVerifyContact().should('exist').contains('Verify').click()
     verifyContactPage.getPageTitle().should('have.text', 'Enter OTP')

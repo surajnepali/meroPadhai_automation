@@ -54,6 +54,24 @@ Feature: Verify Phone Number
             | hanede6825@chnlog.com    | password | 9848022338   |
 
 
+    Scenario Outline: Try to verify already used phone number
+        When user clicks Login button and redirected to login page
+        And user logs in with '<email>' and '<password>'
+        And verify phone number pop up should appear with '<email>'
+        And user types already used '<phone-number>' in phone number field
+        And user clicks Verify button and sees error message
+        And user checks whether the entered '<phone-number>' is not saved in contact field of profile page
+        And user logs out from the website
+        And user clicks Login button and redirected to login page
+        And user logs in with '<email>' and '<password>'
+        And verify phone number pop up should appear with '<email>'
+        Then contact field should be empty in pop up box
+
+        Examples:
+            | email                   | password | phone-number |
+            | xoceya2492@chnlog.com   | password | 9806762451   |
+
+
     Scenario Outline: Type Phone Number, click Verify and cancel, logout, login and contact field contains your unverified phone number in pop up box
         When user clicks Login button and redirected to login page
         And user logs in with '<email>' and '<password>'
