@@ -2,7 +2,10 @@ class VerifyContactPage{
 
     constructor(){
         this.pageTitle = 'h1.css-tvkyhx'
-        this.contactText = '.css-1p8zgth'
+        this.contactText = 'span.css-1p8zgth'
+        this.resendBtn = 'p.text-primary-2'
+        this.toastMessage = '.ct-group'
+        this.continueBtn = 'button.chakra-button.css-1pa32pw'
     }
 
     getPageTitle(){
@@ -13,6 +16,21 @@ class VerifyContactPage{
     getContactText(){
         const contact = cy.get(this.contactText)
         return contact
+    }
+
+    getResendBtn(){
+        const resend = cy.get(this.resendBtn)
+        return resend
+    }
+
+    getToastMessage(){
+        const toast = cy.get(this.toastMessage)
+        return toast
+    }
+
+    getContinueBtn(){
+        const cont = cy.get(this.continueBtn)
+        return cont
     }
 
 }

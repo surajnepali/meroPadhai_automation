@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
 
 import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
-import { contains } from "cypress/types/jquery";
 
 const HomePage = require("../../../../support/PageObject/HomePage")
 const LoginPage = require("../../../../support/PageObject/LoginPage")
@@ -16,6 +15,7 @@ const profilePage = new ProfilePage()
 const verifyContactPage = new VerifyContactPage()
 
 let name = ""
+let timer = 0
 
 
 
@@ -65,10 +65,43 @@ When('user logs out from the website', () => {
 })
 
 When('user clicks Verify button for {string} but cancel the verification', (phone) => {
-    logHomePage.verifyContact().should('exist').click()
+    logHomePage.getVerifyContact().should('exist').contains('Verify').click()
     verifyContactPage.getPageTitle().should('have.text', 'Enter OTP')
     verifyContactPage.getContactText().should('exist').contains(phone).click()
     cy.go('back')
+    logHomePage.getVerifyPopUp().should('exist')
+    logHomePage.getVerifyTitle().should('have.text', 'Verify Phone Number')
+    logHomePage.getSkipBtn().should('exist').contains('Skip').click()
+})
+
+When('user checks whether the entered {string} is saved in contact field of profile page', (phone) => {
+    logHomePage.getAvatarBtn().should('exist').click()
+    logHomePage.getProfileBtn().should('exist').click()
+    profilePage.getPageTitle().should('have.text', 'Account Setting')
+    profilePage.getNameField().should('exist').then((result) => {
+        expect(result.text()).to.equal(name)
+    })
+    profilePage.getContactField().should('contain', phone)
+    cy.go('back')
+    cy.wait(2500)
+})
+
+When('user clicks Verify button for {string} and verify the phone number', (phone) => {
+    logHomePage.getVerifyContact().should('exist').contains('Verify').click()
+    verifyContactPage.getPageTitle().should('have.text', 'Enter OTP')
+    verifyContactPage.getContactText().should('exist').contains(phone).click()
+    cy.wait(10000)
+    verifyContactPage.getContinueBtn().should('exist').contains('Continue').click()
+    verifyContactPage.getToastMessage().should('exist').contains("OTP didn't match")
+    cy.wait(56000)
+    verifyContactPage.getContinueBtn().should('exist').contains('Continue').click()
+    verifyContactPage.getToastMessage().should('exist').contains("Otp has expired.")
+    verifyContactPage.getResendBtn().should('exist').contains('Resend').click()
+    verifyContactPage.getToastMessage().should('exist').contains("OTP sent to your contact number.")
+    cy.wait(20000)
+    verifyContactPage.getContinueBtn().should('exist').contains('Continue').click()
+    verifyContactPage.getToastMessage().should('exist').contains("Contact number updated successfully.")
+    cy.wait(2500)
 })
 
 Then('verify phone number pop up should appear with {string}', (email) => {
@@ -87,4 +120,13 @@ Then('user should be redirected to home page', () => {
 Then('contact field should be empty in pop up box',() => {
     cy.wait(2500)
     logHomePage.getContactField().should('exist').and('have.value', '')
+})
+
+Then('contact field should contain {string} in pop up box', (phone) => {
+    logHomePage.getContactField().should('exist').and('have.value', phone)
+})
+
+Then('user is redirected to home page and doesnot see Verify Popup box anymore', () => {
+    logHomePage.pageTitle().should('have.text', 'On your markGet set Learn!')
+    logHomePage.getVerifyPopUp().should('not.exist')
 })

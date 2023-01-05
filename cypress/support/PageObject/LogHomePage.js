@@ -62,7 +62,7 @@ class LogHomePage{
         return email
     }
 
-    verifyContact(){
+    getVerifyContact(){
         const verify = cy.get(this.verifyContact)
         return verify
     }
