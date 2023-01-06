@@ -24,7 +24,8 @@
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-iframe": "^1.0.1",
     "mocha": "^10.1.0",
-    "mochawesome": "^7.1.3"
+    "mochawesome": "^7.1.3",
+    "node-xlsx": "^0.21.0"
   },
   "dependencies": {
     "aggregate-error": "^3.1.0",

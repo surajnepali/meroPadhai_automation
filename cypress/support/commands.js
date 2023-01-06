@@ -7,7 +7,12 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-//
+
+
+Cypress.Commands.add('parseXlsx', (inputFile) => {
+    return cy.task('parseXlsx', { filePath: inputFile })
+    })
+
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
