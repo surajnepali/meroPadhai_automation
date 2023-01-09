@@ -6,11 +6,13 @@ const HomePage = require("../../../../support/PageObject/HomePage")
 const LoginPage = require("../../../../support/PageObject/LoginPage")
 const LogHomePage = require("../../../../support/PageObject/LogHomePage")
 const ProfilePage = require("../../../../support/PageObject/ProfilePage")
+const VerifyContactPage = require("../../../../support/PageObject/VerifyContactPage")
 
 const homePage = new HomePage()
 const loginPage = new LoginPage()
 const logHomePage = new LogHomePage()
 const profilePage = new ProfilePage()
+const verifyContactPage = new VerifyContactPage()
 
 let name = ""
 let num = ""
@@ -71,6 +73,47 @@ When('user enters {string} in the text box and clicks Cancel button', (phone) =>
     profilePage.getChangeCancelBtn().should('exist').click()
 })
 
+When('user enters {string} in the text box', (phone) => {
+    profilePage.getChangeNumberField().should('exist').type(phone)
+    profilePage.getChangeNumberField().invoke('val').then((text) => {
+        num = text
+        cy.log(num)
+    })
+})
+
+When('user clicks Change button, enters {string} in the text box and clicks Submit button', (phone) => {
+    profilePage.getChangeNumberBtn().should('exist').click()
+    profilePage.getChangeNumberField().should('exist').type(phone)
+    profilePage.getSubmitBtn().should('exist').click()
+    profilePage.getToastMessage().should('exist').and('have.text', "Please verify OTP.")
+})
+
+When('user clicks meropadhai button instead of typing OTP code for {string}', (phone) => {
+    cy.url().should('contain', '/user/verify-contact')
+    verifyContactPage.getPageTitle().should('have.text', 'Enter OTP')
+    verifyContactPage.getContactText().should('exist').and('contain', phone)
+    verifyContactPage.getLogoBtn().should('exist').click()
+})
+
+When('verify Phone pop up box appears for {string} and contains recently semi-updated contact {string}', (email, phone) => {
+    logHomePage.getVerifyPopUp().should('be.visible')
+    logHomePage.getVerifyTitle().should('have.text', 'Verify Phone Number')
+    logHomePage.getEmailField().should('exist').and('have.value', email)
+    logHomePage.getContactField().should('exist').and('have.value', phone)
+})
+
+When('user clicks skip button, clicks Profile button, and clicks Avatar', () => {
+    logHomePage.getSkipBtn().should('exist').contains('Skip').click()
+    logHomePage.getAvatarBtn().should('exist').click()
+    logHomePage.getProfileBtn().should('exist').click()
+    profilePage.getPageTitle().should('have.text', 'Account Setting')
+})
+
+When('user enters {string} in the text box and clicks Submit button', (phone) => {
+    profilePage.getChangeNumberField().should('exist').type(phone)
+    profilePage.getSubmitBtn().should('exist').click()
+})
+
 Then('user should see negative  toast message', () => {
     profilePage.getToastMessage().should('exist').and('have.text', "Invalid contact provided for 'contact' in body")
 })
@@ -78,4 +121,16 @@ Then('user should see negative  toast message', () => {
 Then('user clicks Change button and should see the recently typed {string} in the text box', (phone) => {
     profilePage.getChangeNumberBtn().should('exist').click()
     profilePage.getNumEnteredField().should('exist').and('have.value', num)
+})
+
+Then('user should see Invalid Contact Number message', () => {
+    profilePage.getInvalidNumber().should('be.visible').and('have.text', 'Invalid Contact Number.')
+})
+
+Then('user should see the recently semi-updated contact {string} in the text box', (phone) => {
+    profilePage.getContactField().should('exist').contains(phone)
+})
+
+Then('user should see Number Already Existed message', () => {
+    profilePage.getToastMessage().should('exist').and('have.text', "Phone Number already used.")
 })

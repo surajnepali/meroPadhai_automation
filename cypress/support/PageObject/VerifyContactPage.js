@@ -2,6 +2,7 @@ class VerifyContactPage{
 
     constructor(){
         this.pageTitle = 'h1.css-tvkyhx'
+        this.logoBtn = '.css-1a1ne0d > a:nth-child(1) > span:nth-child(1)'
         this.contactText = 'span.css-1p8zgth'
         this.resendBtn = 'p.text-primary-2'
         this.toastMessage = '.ct-group'
@@ -11,6 +12,11 @@ class VerifyContactPage{
     getPageTitle(){
         const title = cy.get(this.pageTitle)
         return title
+    }
+
+    getLogoBtn(){
+        const logo = cy.get(this.logoBtn)
+        return logo
     }
 
     getContactText(){

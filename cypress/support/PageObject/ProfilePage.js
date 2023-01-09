@@ -10,6 +10,7 @@ class ProfilePage{
         this.submitBtn = 'button.chakra-button.css-spv0dk'
         this.changeCancelBtn = 'button.chakra-button.css-n4qrmo'
         this.toastMessage = 'div.ct-text'
+        this.invalidNumber = 'p.chakra-text.error.css-1tof9tn' 
     }
     
     getPageTitle(){
@@ -55,6 +56,11 @@ class ProfilePage{
     getChangeCancelBtn(){
         const cancel = cy.get(this.changeCancelBtn)
         return cancel
+    }
+
+    getInvalidNumber(){
+        const invalid = cy.get(this.invalidNumber)
+        return invalid
     }
 
 }
