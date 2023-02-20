@@ -11,7 +11,7 @@ class CartPage{
         this.totalPrice = '.css-1izio3i'
         this.courseName = '.css-108nr98'
         this.pricePerCourse = '.css-10oczdc > :nth-child(1)'
-        this.paymentPopUp = '#chakra-modal-9'
+        this.paymentPopUp = '#chakra-modal-3'
         this.eSewaMethod = '#esewa'
         this.khaltiMethod = '#khalti'
         this.actualCheckout = '.css-1orkoap > .chakra-button'

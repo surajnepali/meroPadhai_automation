@@ -4,7 +4,7 @@ class CourseDetailsPage{
         this.title = '.css-10igdfz > .css-d36phq'
         this.courseTitle = 'h1.css-d36phq'
         this.buyNowButton = '.css-185xt85 > .css-1yrfiy8'
-        this.pricePopUp = '#chakra-modal-9'
+        this.pricePopUp = '#chakra-modal-3'
         this.wishlistButton = '.css-1symmn5'
         this.dropdown = '.chakra-select'
         this.option = 'option'

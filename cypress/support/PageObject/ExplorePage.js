@@ -5,7 +5,7 @@ class ExplorePage{
         this.courseDesc = '.css-bc2ghm'
         this.courseName = 'h2.css-108nr98'
         this.buyNowButton = '.css-185xt85 > .chakra-button'
-        this.pricePopUp = '#chakra-modal-9'
+        this.pricePopUp = '#chakra-modal-3'
     }
 
     getPageTitle(){

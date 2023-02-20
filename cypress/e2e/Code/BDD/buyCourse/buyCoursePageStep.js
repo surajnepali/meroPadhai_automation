@@ -34,7 +34,7 @@ When('user goes to login page and logs in with {string} and {string}', (email, p
     loginPage.fillEmail(email) 
     loginPage.fillPassword(password)
     loginPage.submitBtn()
-    logHomePage.pageTitle().should('have.text', 'On your markGet set Learn!')
+    logHomePage.pageTitle().should('have.text', 'On your markGet setLearn!')
 })
 
 When('user clicks on the explore button', () => {

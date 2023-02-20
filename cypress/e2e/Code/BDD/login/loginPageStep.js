@@ -64,8 +64,8 @@ When('user clicks Forgot Password button and redirected to Forgot Password page'
 
 Then('user comes back to Login page and previously filled form is cleared', () => {
     cy.go('back')
-    cy.get('#field-1').should('have.value', '')
-    cy.get('#field-2').should('have.value', '')
+    cy.get('//input[@name="email"]').should('have.value', '')
+    cy.get('//input[@name="password"]').should('have.value', '')
 })
 
 Then('invalid password message is shown', () => {
@@ -74,5 +74,5 @@ Then('invalid password message is shown', () => {
 
 Then('user should be successfully logged in and redirected to Home page', () => {
     cy.url().should('include', '/')
-    logHomePage.pageTitle().should('have.text', 'On your markGet set Learn!')
+    logHomePage.pageTitle().should('have.text', 'On your markGet setLearn!')
 })

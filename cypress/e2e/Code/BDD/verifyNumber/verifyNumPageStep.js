@@ -125,7 +125,7 @@ Then('verify phone number pop up should appear with {string}', (email) => {
 })
 
 Then('user should be redirected to home page', () => {
-    logHomePage.pageTitle().should('have.text', 'On your markGet set Learn!')
+    logHomePage.pageTitle().should('have.text', 'On your markGet setLearn!')
 })
 
 Then('contact field should be empty in pop up box',() => {
@@ -138,6 +138,6 @@ Then('contact field should contain {string} in pop up box', (phone) => {
 })
 
 Then('user is redirected to home page and doesnot see Verify Popup box anymore', () => {
-    logHomePage.pageTitle().should('have.text', 'On your markGet set Learn!')
+    logHomePage.pageTitle().should('have.text', 'On your markGet setLearn!')
     logHomePage.getVerifyPopUp().should('not.exist')
 })

@@ -4,8 +4,8 @@ class LoginPage extends HomePage{
     constructor(){
         super()
         this.title = 'span.css-65le5m'
-        this.email = '#field-1'
-        this.password = '#field-2'
+        this.email = '//input[@name="email"]'
+        this.password = '//input[@name="password"]'
         this.loginButton = '.chakra-button'
         
     }
@@ -16,12 +16,12 @@ class LoginPage extends HomePage{
     }
 
     fillEmail(value){
-        const field = cy.get(this.email)
+        const field = cy.xpath(this.email)
         field.type(value)
         return this
     }
     fillPassword(value){
-        const field = cy.get(this.password)
+        const field = cy.xpath(this.password)
         field.type(value)
         return this
     }

@@ -10,9 +10,6 @@ module.exports = defineConfig({
   viewportHeight: 1080,
   viewportWidth: 1920,
   experimentalSessionAndOrigin: true,
-  env: {
-    url: "https://meropadhai.com",
-  },
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here

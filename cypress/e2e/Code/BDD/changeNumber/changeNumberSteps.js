@@ -46,7 +46,7 @@ When('verify Phone pop up box appears for {string} but user clicks skip button',
 })
 
 When('user is redirected to home page and clicks Profile button', () => {
-    logHomePage.pageTitle().should('exist').contains('On your markGet set Learn!')
+    logHomePage.pageTitle().should('exist').contains('On your markGet setLearn!')
     logHomePage.getAvatarBtn().should('exist').click()
     logHomePage.getProfileBtn().should('exist').click()
     profilePage.getPageTitle().should('have.text', 'Account Setting')
