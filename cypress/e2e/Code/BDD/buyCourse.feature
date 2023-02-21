@@ -10,8 +10,8 @@ Feature: Buy a course from the meropadhai.com website
     And user clicks on the buy now button
     And user choses course pricing for '<month>' and continues
     And user clicks Checkout button, selects e-Sewa payment method and checkout with '<courseName>'
-    And user is redirected to e-Sewa website, fills form with '<eSewaId>' and '<eSewaPassword>', buys properly
+    And user is redirected to e-Sewa website, fills form with your eSewaId and eSewaPassword, buys properly
     Then user is redirected to meropadhai website and '<courseName>' is bought
     Examples:
-    | email                   | password | courseName                             | month | eSewaId       | eSewaPassword |
-    | ravila9384@fanneat.com  | password | Fundamentals of Financial Management   | 1     | 8888888888    | ****          |
+    | email                   | password | courseName                             | month | 
+    | ravila9384@fanneat.com  | password | Fundamentals of Financial Management   | 1     |

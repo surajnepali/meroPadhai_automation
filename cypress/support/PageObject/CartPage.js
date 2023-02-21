@@ -1,5 +1,3 @@
-import { get } from "lodash"
-
 class CartPage{
 
     constructor(){
@@ -8,9 +6,9 @@ class CartPage{
         this.removeBtn = '.css-1gtanqs > .chakra-button'
         this.changePlanBtn = '.css-70qvj9 > p'
         this.checkoutBtn = '.css-u9b4mi > .chakra-button'
-        this.totalPrice = '.css-1izio3i'
-        this.courseName = '.css-108nr98'
-        this.pricePerCourse = '.css-10oczdc > :nth-child(1)'
+        this.totalPrice = 'span.chakra-text.css-1izio3i'
+        this.courseName = 'h2.css-28pdcr'
+        this.pricePerCourse = '.css-3jpaym > :nth-child(1)'
         this.paymentPopUp = '#chakra-modal-3'
         this.eSewaMethod = '#esewa'
         this.khaltiMethod = '#khalti'

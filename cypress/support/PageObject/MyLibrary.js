@@ -3,7 +3,7 @@ class MyLibrary{
     constructor(){
         this.pageTitle = ':nth-child(2) > .chakra-breadcrumb__link'
         this.courseContainer = '.css-w8uob2'
-        this.courseName = 'h2.css-108nr98'
+        this.courseName = 'h2.css-28pdcr'
 
     }
 

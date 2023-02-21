@@ -48,7 +48,7 @@ When('user clicks on the explore button', () => {
 When('user selects the course {string}', (courseName) => {
     explorePage.getGridContainer().find('.css-bc2ghm').each(($el, index, $list) => {
 
-        const courseNaam = $el.find('h2.css-108nr98').text()
+        const courseNaam = $el.find('h2.css-28pdcr').text()
         
         if (courseNaam.includes(courseName)) {
             cy.scrollTo('right') // Scrolls 'footer' into view
@@ -69,9 +69,9 @@ When('user clicks on the buy now button', () => {
 
 When('user choses course pricing for {string} and continues', (month) => {
     if(courseDetailsPage.getDropdown().select(month)){
-        courseDetailsPage.getPrice().should('exist').and('have.text', 'Rs. 200')
+        courseDetailsPage.getPrice().should('exist').and('have.text', 'Rs. 199')
     }
-    if(courseDetailsPage.getContinueBtn().contains('Rs.200')){
+    if(courseDetailsPage.getContinueBtn().contains('Rs.199')){
         cy.log("Continue button is enabled")
         courseDetailsPage.getContinueBtn().click()
     }
@@ -81,8 +81,8 @@ When('user choses course pricing for {string} and continues', (month) => {
 When('user clicks Checkout button, selects e-Sewa payment method and checkout with {string}', (courseName) => {
     
     //Proper validation with Checkout button
-    cartPage.getCartTitle().should('have.text', ' Course in cart.')
-    cartPage.getPriceSummary().should('exist').and('have.text', 'Price summary')
+    cartPage.getCartTitle().should('have.text', 'Course in Cart')
+    cartPage.getPriceSummary().should('exist').and('have.text', 'Price Summary')
     cartPage.getCourseName().should('exist').and('have.text', courseName)
     let sum = 0
     let total = 0
@@ -95,14 +95,17 @@ When('user clicks Checkout button, selects e-Sewa payment method and checkout wi
     }).then( () => {
         cy.log(sum)
     })
-    
+    cy.wait(1500)
         // cartPage.getTotalPrice().should('exist').and('have.text', 'Rs. ' + sum)
 
-    cartPage.getTotalPrice().then( (elem) =>{
+    cartPage.getTotalPrice().should('exist').then( (elem) =>{
         const amount = elem.text()
-        let result = amount.split(".")
-        total = result[1].trim()
+        let result = amount.split(" ")
+        let res = result[1].split(".")
+        total = res[0]
+
         cy.log(total)
+        cy.wait(1500)
         if(expect(Number(total)).to.equal(sum)){
             cartPage.getCheckoutBtn().click()
             cartPage.getPaymentPopUp().should('exist')
@@ -114,19 +117,19 @@ When('user clicks Checkout button, selects e-Sewa payment method and checkout wi
     })
 })
 
-When('user is redirected to e-Sewa website, fills form with {string} and {string}, buys properly', (eSewaId, eSewaPassword) => {
+When('user is redirected to e-Sewa website, fills form with your eSewaId and eSewaPassword, buys properly', () => {
     eSewaPage.getESewaVerify().should('have.text', 'Please login to make your payment ')
-    eSewaPage.getESewaId(eSewaId)
-    eSewaPage.getESewaPassword(eSewaPassword)
+    eSewaPage.getESewaId(Cypress.env('esewaID'))
+    eSewaPage.getESewaPassword(Cypress.env('esewaPW'))
     eSewaPage.getESewaLogin().click()
     eSewaPage.getWarningMessage()
         .should('have.text', ' Please enter token sent to your phone carefully. You only have one attempt for security reason. ')
     eSewaPage.getTokenField().should('exist')
     cy.wait(20000)
     eSewaPage.getContinuePayment().click()
-    eSewaPage.getDetailEsewaId().should('have.value', eSewaId)
+    eSewaPage.getDetailEsewaId().should('have.value', Cypress.env('esewaID'))
     eSewaPage.getDetailName().type('Suraj Nepali')
-    eSewaPage.getDetailContact().type(eSewaId)
+    eSewaPage.getDetailContact().type(Cypress.env('esewaID'))
     eSewaPage.getDetailAddress().type('Pokhara')
     eSewaPage.getDetailEmail().type('surajnepali7896@gmail.com')
     eSewaPage.getContPayBtn().click()

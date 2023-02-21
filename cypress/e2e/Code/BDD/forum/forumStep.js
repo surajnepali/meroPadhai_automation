@@ -43,9 +43,9 @@ When('user clicks on the My Library button', () => {
 
 When('user selects the {string} and clicks it', (course) => {
     myLibrary.getCourseContainer().find('.css-bc2ghm').each(($el, index, $list) => {
-        const courseName = $el.find('h2.css-108nr98').text()
+        const courseName = $el.find('h2.css-28pdcr').text()
         if (courseName.includes(course)) {
-            cy.wrap($el).find('h2.css-108nr98').click()
+            cy.wrap($el).find('h2.css-28pdcr').click()
         }
     })
     courseWatchPage.getPageVerify().should('exist').and('have.text', course)
