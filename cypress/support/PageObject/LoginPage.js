@@ -15,15 +15,13 @@ class LoginPage extends HomePage{
         return title
     }
 
-    fillEmail(value){
-        const field = cy.xpath(this.email)
-        field.type(value)
-        return this
+    fillEmail(){
+        const field1 = cy.xpath(this.email)
+        return field1
     }
-    fillPassword(value){
-        const field = cy.xpath(this.password)
-        field.type(value)
-        return this
+    fillPassword(){
+        const field2 = cy.xpath(this.password)
+        return field2
     }
     submitBtn(){
         const button = cy.get(this.loginButton)

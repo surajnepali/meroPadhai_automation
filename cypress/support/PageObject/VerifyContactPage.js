@@ -2,7 +2,7 @@ class VerifyContactPage{
 
     constructor(){
         this.pageTitle = 'h1.css-tvkyhx'
-        this.logoBtn = '.css-1a1ne0d > a:nth-child(1) > span:nth-child(1)'
+        this.logoBtn = 'img[alt="Padhai Logo"]'
         this.contactText = 'span.css-1p8zgth'
         this.resendBtn = 'p.text-primary-2'
         this.toastMessage = '.ct-group'

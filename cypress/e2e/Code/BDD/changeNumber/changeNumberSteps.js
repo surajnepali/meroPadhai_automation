@@ -28,16 +28,16 @@ When('user clicks Login button and redirected to login page', () => {
     loginPage.getPageTitle().should('have.text', 'Sign in to continue')
 })
 
-When('user logs in with {string} and {string}', (email, password) => {
-    loginPage.fillEmail(email)
-    loginPage.fillPassword(password)
+When('user logs in with email and password', () => {
+    loginPage.fillEmail().type(Cypress.env("emailChangePhoneNumberPage"))
+    loginPage.fillPassword().type(Cypress.env("passwordChangePhoneNumberPage"))
     loginPage.submitBtn()
 })
 
-When('verify Phone pop up box appears for {string} but user clicks skip button', (email) => {
+When('verify Phone pop up box appears for email but user clicks skip button', () => {
     logHomePage.getVerifyPopUp().should('be.visible')
     logHomePage.getVerifyTitle().should('have.text', 'Verify Phone Number')
-    logHomePage.getEmailField().should('exist').and('have.value', email)
+    logHomePage.getEmailField().should('exist').and('have.value', Cypress.env("emailChangePhoneNumberPage"))
     logHomePage.getNameField().invoke('val').then((text) => {
         name = text
     })
@@ -85,7 +85,7 @@ When('user clicks Change button, enters {string} in the text box and clicks Subm
     profilePage.getChangeNumberBtn().should('exist').click()
     profilePage.getChangeNumberField().should('exist').type(phone)
     profilePage.getSubmitBtn().should('exist').click()
-    profilePage.getToastMessage().should('exist').and('have.text', "Please verify OTP.")
+    profilePage.getToastMessage().should('exist').and('have.text', "OTP has been sent to your contact.")
 })
 
 When('user clicks meropadhai button instead of typing OTP code for {string}', (phone) => {
@@ -95,10 +95,10 @@ When('user clicks meropadhai button instead of typing OTP code for {string}', (p
     verifyContactPage.getLogoBtn().should('exist').click()
 })
 
-When('verify Phone pop up box appears for {string} and contains recently semi-updated contact {string}', (email, phone) => {
+When('verify Phone pop up box appears for email and contains recently semi-updated contact {string}', (phone) => {
     logHomePage.getVerifyPopUp().should('be.visible')
     logHomePage.getVerifyTitle().should('have.text', 'Verify Phone Number')
-    logHomePage.getEmailField().should('exist').and('have.value', email)
+    logHomePage.getEmailField().should('exist').and('have.value', Cypress.env("emailChangePhoneNumberPage"))
     logHomePage.getContactField().should('exist').and('have.value', phone)
 })
 
@@ -115,7 +115,7 @@ When('user enters {string} in the text box and clicks Submit button', (phone) =>
 })
 
 Then('user should see negative  toast message', () => {
-    profilePage.getToastMessage().should('exist').and('have.text', "Invalid contact provided for 'contact' in body")
+    profilePage.getToastMessage().should('exist').and('have.text', "Phone number cannot be empty.")
 })
 
 Then('user clicks Change button and should see the recently typed {string} in the text box', (phone) => {
