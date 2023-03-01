@@ -2,10 +2,10 @@ class CartPage{
 
     constructor(){
         this.cartTitle = '.css-i9gxme > .chakra-heading'
-        this.priceSummary = '.css-u9b4mi > .chakra-heading'
+        this.priceSummary = '.css-ge5lnb > .chakra-heading'
         this.removeBtn = '.css-1gtanqs > .chakra-button'
         this.changePlanBtn = '.css-70qvj9 > p'
-        this.checkoutBtn = '.css-u9b4mi > .chakra-button'
+        this.checkoutBtn = 'button.css-7ven0'
         this.totalPrice = 'span.chakra-text.css-1izio3i'
         this.courseName = 'h2.css-28pdcr'
         this.pricePerCourse = '.css-3jpaym > :nth-child(1)'

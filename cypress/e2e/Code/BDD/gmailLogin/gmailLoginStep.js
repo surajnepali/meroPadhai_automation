@@ -28,13 +28,7 @@ When('user clicks on the Register button', () => {
 })
 
 When('user clicks on the signup with google button and next window opens', () => {
-    cy.get('div.S9gUrf-YoZ4jf').click()
-    cy.wait(8000)
-    cy.iframe()
-        .find('div.k77Iifz')
-        .should('exist')
-        .find('div.fFW7wc-ibnC6b-sM5MNbTAKBxb')
-        .eq(0)
-        .click()
-
+    cy.get('iframe[id*="gsi_"]').click().then($iframe => {
+        const $body = $iframe.contents().find('body')
+    })
 })

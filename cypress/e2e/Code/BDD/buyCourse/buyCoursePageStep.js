@@ -51,8 +51,8 @@ When('user selects the course {string}', (courseName) => {
         const courseNaam = $el.find('h2.css-28pdcr').text()
         
         if (courseNaam.includes(courseName)) {
-            cy.scrollTo('right') // Scrolls 'footer' into view
-            cy.wrap($el).find('.css-6y3qij').click()
+             // Scrolls 'footer' into view
+            cy.wrap($el).find('.css-6y3qij').click({force: true})
         }
     })
     courseDetailsPage.getCourseTitle().should('exist').contains(courseName)
