@@ -10,7 +10,7 @@ class ForumPage{
         this.responseContainer = '.css-1wchpuk'
         this.responseField = '.txt-area'
         this.chooseImage = '.css-3ehjyz'
-        this.uploadedImage = '.css-156036'
+        this.uploadedImage = 'img.css-1bn144m'
         this.publishResponseBtn = 'button.chakra-button.css-11ya3lz'
         this.toastMessage = '.ct-toast'
 

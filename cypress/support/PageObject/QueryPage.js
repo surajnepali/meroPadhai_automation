@@ -8,7 +8,7 @@ class QueryPage{
         this.responseField = '.txt-area'
         this.publishResponse = '.css-11ya3lz'
         this.selectImage = '.css-3ehjyz'
-        this.uploadedImage = '.css-156036'
+        this.uploadedImage = 'img.css-1bn144m'
         this.aResponse = '.css-16g34o9'
         this.responseReader = '.css-1hgneaz'
         this.toastMessage = '.ct-toast'

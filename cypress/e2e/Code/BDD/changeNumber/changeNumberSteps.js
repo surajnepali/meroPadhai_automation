@@ -30,7 +30,7 @@ When('user clicks Login button and redirected to login page', () => {
 
 When('user logs in with email and password', () => {
     loginPage.fillEmail().type(Cypress.env("emailChangePhoneNumberPage"))
-    loginPage.fillPassword().type(Cypress.env("passwordChangePhoneNumberPage"))
+    loginPage.fillPassword().type(Cypress.env("password"))
     loginPage.submitBtn()
 })
 

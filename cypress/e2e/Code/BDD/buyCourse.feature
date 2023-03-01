@@ -4,7 +4,7 @@ Feature: Buy a course from the meropadhai.com website
     Given user opens the meropadhai website
 
     Scenario Outline: Buy a course
-    When user goes to login page and logs in with '<email>' and '<password>' 
+    When user goes to login page and logs in with email and password 
     And user clicks on the explore button
     And user selects the course '<courseName>'
     And user clicks on the buy now button
@@ -14,4 +14,4 @@ Feature: Buy a course from the meropadhai.com website
     Then user is redirected to meropadhai website and '<courseName>' is bought
     Examples:
     | email                   | password | courseName                             | month | 
-    | ravila9384@fanneat.com  | password | Fundamentals of Financial Management   | 1     |
+    | ravila9384@fanneat.com  | password | Test-videos   | 1     |

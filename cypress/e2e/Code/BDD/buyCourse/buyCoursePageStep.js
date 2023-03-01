@@ -27,7 +27,7 @@ Given('user opens the meropadhai website', () => {
     homePage.getPageTitle().should('have.text', 'Learn all courses at home.')
 })
 
-When('user goes to login page and logs in with {string} and {string}', (email, password) => {
+When('user goes to login page and logs in with email and password', (email, password) => {
     homePage.getLoginButton().click()
     cy.url().should('include', '/auth/signin')
     loginPage.getPageTitle().should('have.text', 'Sign in to continue')
@@ -138,7 +138,7 @@ When('user is redirected to e-Sewa website, fills form with your eSewaId and eSe
 })
 
 Then('user is redirected to meropadhai website and {string} is bought', (courseName) => {
-    cy.url().should('include', '/my-learning')
+    cy.url().should('include', '/my-library')
     myLibrary.getPageTitle().should('have.text', 'My Learning')
     myLibrary.getCourseName().should('exist').and('have.text', courseName)
 })
