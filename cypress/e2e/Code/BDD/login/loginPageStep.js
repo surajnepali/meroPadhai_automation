@@ -9,7 +9,7 @@ const loginPage = new LoginPage()
 const logHomePage = new LogHomePage()
 
 Given('user opens the meropadhai website', () => {
-    cy.visit("https://meropadhai.com")
+    cy.visit(Cypress.env('url'))
     homePage.getPageTitle().should('have.text', 'Learn all courses at home.')
 })
 
@@ -30,7 +30,7 @@ When('user clicks Login button and redirected to Login page', () => {
 
 When('user clicks on arrow icon to login', () => {
     loginPage.submitBtn()
-    loginPage.havetitle().click()
+    loginPage.haveTitle().click()
 })
 
 Then('user should see error message', () => {
@@ -38,9 +38,19 @@ Then('user should see error message', () => {
     loginPage.passwordEmpty().should('have.text', 'Password is required.')
 })
 
-When('user enters email {string} and password {string}', (email, password) => {
-    loginPage.fillEmail(email)
-    loginPage.fillPassword(password)
+When('user enters unregistered email and password', () => {
+    loginPage.fillEmail().type(Cypress.env('unregistered_email'))
+    loginPage.fillPassword().type(Cypress.env('password'))
+})
+
+When('user enters email and password', () => {
+    loginPage.fillEmail().type(Cypress.env('emailForumPage'))
+    loginPage.fillPassword().type(Cypress.env('password'))
+})
+
+When('user enters email and {string}', (password) => {
+    loginPage.fillEmail().type(Cypress.env('emailForumPage'))
+    loginPage.fillPassword().type(password)
 })
 
 When('user clicks on arrow icon for loggin in', () => {
@@ -64,8 +74,8 @@ When('user clicks Forgot Password button and redirected to Forgot Password page'
 
 Then('user comes back to Login page and previously filled form is cleared', () => {
     cy.go('back')
-    cy.get('//input[@name="email"]').should('have.value', '')
-    cy.get('//input[@name="password"]').should('have.value', '')
+    loginPage.fillEmail().should('have.value', '')
+    loginPage.fillPassword().should('have.value', '')
 })
 
 Then('invalid password message is shown', () => {
