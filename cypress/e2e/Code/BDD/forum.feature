@@ -12,7 +12,7 @@ Feature: All testcases of FORUM
     Then user should see the negative toast message
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Write query, click View All Queries, and go back, written query is cleared
@@ -24,7 +24,7 @@ Feature: All testcases of FORUM
     Then user goes back and finds query textarea is cleared
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select an image, click Publish button without writing any query
@@ -36,7 +36,7 @@ Feature: All testcases of FORUM
     Then user should see the negative toast message
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select an image and remove it
@@ -48,7 +48,7 @@ Feature: All testcases of FORUM
     Then user should see the image is removed
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select an image and change image
@@ -60,7 +60,7 @@ Feature: All testcases of FORUM
     Then user should see the image is changed
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select an image, click View All Queries, and go back, selected image is cleared
@@ -72,7 +72,7 @@ Feature: All testcases of FORUM
     Then user goes back and finds selected image is cleared
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Write query, click Publish including chapter name, query for review message is shown.
@@ -84,7 +84,7 @@ Feature: All testcases of FORUM
     Then user includes chapter name and should see the positive toast message
     Examples:
     | course                                 |
-    | Test-videos   |   
+    | Fundamentals of Financial Management   |   
 
 
     Scenario Outline: Write query, click Publish without including chapter name, query for review message is shown.
@@ -96,7 +96,7 @@ Feature: All testcases of FORUM
     Then user does not include chapter name and should see the positive toast message
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Write query, select image, click Publish including chapter name.
@@ -108,7 +108,7 @@ Feature: All testcases of FORUM
     Then user includes chapter name and should see the positive toast message
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Write query, select image, click Publish without including chapter name.
@@ -120,7 +120,7 @@ Feature: All testcases of FORUM
     Then user does not include chapter name and should see the positive toast message
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Write query, select image, remove image, click Publish including chapter name.
@@ -133,7 +133,7 @@ Feature: All testcases of FORUM
     Then user includes chapter name and should see the positive toast message
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Write query, select image, change image, click Publish including chapter name.
@@ -146,7 +146,7 @@ Feature: All testcases of FORUM
     Then user includes chapter name and should see the positive toast message
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: View all queries
@@ -158,7 +158,7 @@ Feature: All testcases of FORUM
     Then user sees all the queries associated with '<course>'  
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Click on Add Response button of second query of that course
@@ -172,7 +172,7 @@ Feature: All testcases of FORUM
     Then the textarea for Response is opened
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Click on Add Response button of second query and click Publish without writing response
@@ -186,7 +186,7 @@ Feature: All testcases of FORUM
     Then user should see the negative toast message on Forum Page
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Click on Add Response button of second query and select image and click Publish
@@ -200,7 +200,7 @@ Feature: All testcases of FORUM
     Then user should see the negative toast message on Forum Page
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Click on Add Response button of second query and write response and click Publish
@@ -214,7 +214,7 @@ Feature: All testcases of FORUM
     Then user should see the positive toast message on Forum Page
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Click on Add Response button of second query and write response, selects an image and click Publish
@@ -228,7 +228,7 @@ Feature: All testcases of FORUM
     Then user should see the positive toast message on Forum Page
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Click on Add Response button of second query and click Cancel Response
@@ -242,7 +242,7 @@ Feature: All testcases of FORUM
     Then the textarea for Response is closed
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Click on Add Response button of second query, writes response, click Cancel Response and again click Add Response
@@ -256,7 +256,7 @@ Feature: All testcases of FORUM
     Then the textarea for Response is opened and the written response is cleared
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Click on Add Response button of second query, selects an image, click Cancel Response and again click Add response
@@ -270,7 +270,7 @@ Feature: All testcases of FORUM
     Then the textarea for Response is opened and the selected image is removed
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Click on Add Response button of second query, writes response, selects an image, click Cancel Response and again click Add response
@@ -284,7 +284,7 @@ Feature: All testcases of FORUM
     Then the textarea for Response is opened and the written response and selected image is removed
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: See one of the query
@@ -297,7 +297,7 @@ Feature: All testcases of FORUM
     Then user clicks first query and sees the query
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select a query and click Add Response
@@ -311,7 +311,7 @@ Feature: All testcases of FORUM
     Then the textarea for Response is opened in Query Page
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select a query, click Add Response, and click Cancel Response
@@ -325,7 +325,7 @@ Feature: All testcases of FORUM
     Then the textarea for Response is closed in Query Page
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select a query, click Add Response, write response, and click Cancel Response
@@ -339,7 +339,7 @@ Feature: All testcases of FORUM
     Then user clicks Add Response button and the written response is removed
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select a query, click Add Response, select an image, and click Cancel Response
@@ -353,7 +353,7 @@ Feature: All testcases of FORUM
     Then user clicks Add Response button and the selected image is removed
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select a query, click Add Response, write response, select an image, and click Cancel Response
@@ -367,7 +367,7 @@ Feature: All testcases of FORUM
     Then user clicks Add Response button and the written response and selected image is removed
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select a query, click Add Response, select an image, and publish
@@ -381,7 +381,7 @@ Feature: All testcases of FORUM
     Then negative toast message should be appeared in Query Page
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select a query, click Add Response, write response, and publish
@@ -395,7 +395,7 @@ Feature: All testcases of FORUM
     Then positive toast message should be appeared in Query Page
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select a query, click Add Response, write response, select an image, and publish
@@ -409,7 +409,7 @@ Feature: All testcases of FORUM
     Then positive toast message should be appeared in Query Page
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |
 
 
     Scenario Outline: Select a query, see responses
@@ -422,4 +422,4 @@ Feature: All testcases of FORUM
     Then user clicks first query and user sees all the responses associated with the query
     Examples:
     | course                                 |
-    | Test-videos   |
+    | Fundamentals of Financial Management   |

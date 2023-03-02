@@ -13,5 +13,5 @@ Feature: Buy a course from the meropadhai.com website
     And user is redirected to e-Sewa website, fills form with your eSewaId and eSewaPassword, buys properly
     Then user is redirected to meropadhai website and '<courseName>' is bought
     Examples:
-    | email                   | password | courseName                             | month | 
-    | ravila9384@fanneat.com  | password | Test-videos   | 1     |
+    | courseName                             | month | 
+    | Fundamentals of Financial Management   | 1     |
